@@ -14,6 +14,12 @@
 		520C4B372D6F31B8003B08E2 /* UniversityNTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520C4B362D6F31B8003B08E2 /* UniversityNTests.swift */; };
 		520C4B412D6F31B8003B08E2 /* UniversityNUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520C4B402D6F31B8003B08E2 /* UniversityNUITests.swift */; };
 		520C4B432D6F31B8003B08E2 /* UniversityNUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520C4B422D6F31B8003B08E2 /* UniversityNUITestsLaunchTests.swift */; };
+		520C4B502D6F3386003B08E2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520C4B4F2D6F3386003B08E2 /* LoginView.swift */; };
+		520C4B5C2D6F46DC003B08E2 /* Signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520C4B5B2D6F46DC003B08E2 /* Signup.swift */; };
+		520C4B5E2D6F5020003B08E2 /* Verification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520C4B5D2D6F5020003B08E2 /* Verification.swift */; };
+		520C4B602D6F50BE003B08E2 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520C4B5F2D6F50BE003B08E2 /* ResetPasswordView.swift */; };
+		520C4B622D6F51B6003B08E2 /* PhoneGuideView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520C4B612D6F51B6003B08E2 /* PhoneGuideView1.swift */; };
+		520C4B6A2D6F58FB003B08E2 /* EventAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520C4B692D6F58FB003B08E2 /* EventAppView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +50,12 @@
 		520C4B3C2D6F31B8003B08E2 /* UniversityNUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UniversityNUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		520C4B402D6F31B8003B08E2 /* UniversityNUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversityNUITests.swift; sourceTree = "<group>"; };
 		520C4B422D6F31B8003B08E2 /* UniversityNUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversityNUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		520C4B4F2D6F3386003B08E2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		520C4B5B2D6F46DC003B08E2 /* Signup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signup.swift; sourceTree = "<group>"; };
+		520C4B5D2D6F5020003B08E2 /* Verification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Verification.swift; sourceTree = "<group>"; };
+		520C4B5F2D6F50BE003B08E2 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
+		520C4B612D6F51B6003B08E2 /* PhoneGuideView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneGuideView1.swift; sourceTree = "<group>"; };
+		520C4B692D6F58FB003B08E2 /* EventAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAppView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +108,12 @@
 			children = (
 				520C4B252D6F31B6003B08E2 /* UniversityNApp.swift */,
 				520C4B272D6F31B6003B08E2 /* ContentView.swift */,
+				520C4B4F2D6F3386003B08E2 /* LoginView.swift */,
+				520C4B5B2D6F46DC003B08E2 /* Signup.swift */,
+				520C4B5D2D6F5020003B08E2 /* Verification.swift */,
+				520C4B5F2D6F50BE003B08E2 /* ResetPasswordView.swift */,
+				520C4B612D6F51B6003B08E2 /* PhoneGuideView1.swift */,
+				520C4B692D6F58FB003B08E2 /* EventAppView.swift */,
 				520C4B292D6F31B7003B08E2 /* Assets.xcassets */,
 				520C4B2B2D6F31B7003B08E2 /* Preview Content */,
 			);
@@ -257,6 +275,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				520C4B5E2D6F5020003B08E2 /* Verification.swift in Sources */,
+				520C4B502D6F3386003B08E2 /* LoginView.swift in Sources */,
+				520C4B5C2D6F46DC003B08E2 /* Signup.swift in Sources */,
+				520C4B6A2D6F58FB003B08E2 /* EventAppView.swift in Sources */,
+				520C4B622D6F51B6003B08E2 /* PhoneGuideView1.swift in Sources */,
+				520C4B602D6F50BE003B08E2 /* ResetPasswordView.swift in Sources */,
 				520C4B282D6F31B6003B08E2 /* ContentView.swift in Sources */,
 				520C4B262D6F31B6003B08E2 /* UniversityNApp.swift in Sources */,
 			);

@@ -25,6 +25,7 @@
 		52812BBD2D708F4600BDB866 /* LabListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52812BBC2D708F4600BDB866 /* LabListView.swift */; };
 		52812BBF2D70B7CE00BDB866 /* LocationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52812BBE2D70B7CE00BDB866 /* LocationDetailView.swift */; };
 		52812BC32D70BF0000BDB866 /* CampusMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52812BC22D70BF0000BDB866 /* CampusMapView.swift */; };
+		52812BC72D70CE8600BDB866 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52812BC62D70CE8600BDB866 /* FilterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		52812BBC2D708F4600BDB866 /* LabListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabListView.swift; sourceTree = "<group>"; };
 		52812BBE2D70B7CE00BDB866 /* LocationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailView.swift; sourceTree = "<group>"; };
 		52812BC22D70BF0000BDB866 /* CampusMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusMapView.swift; sourceTree = "<group>"; };
+		52812BC62D70CE8600BDB866 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 				52812BBC2D708F4600BDB866 /* LabListView.swift */,
 				52812BBE2D70B7CE00BDB866 /* LocationDetailView.swift */,
 				52812BC22D70BF0000BDB866 /* CampusMapView.swift */,
+				52812BC62D70CE8600BDB866 /* FilterView.swift */,
 				520C4B6F2D6FA5E2003B08E2 /* EventsListView.swift */,
 				520C4B292D6F31B7003B08E2 /* Assets.xcassets */,
 				520C4B2B2D6F31B7003B08E2 /* Preview Content */,
@@ -290,6 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52812BC72D70CE8600BDB866 /* FilterView.swift in Sources */,
 				52812BBD2D708F4600BDB866 /* LabListView.swift in Sources */,
 				52812BC32D70BF0000BDB866 /* CampusMapView.swift in Sources */,
 				520C4B5E2D6F5020003B08E2 /* Verification.swift in Sources */,

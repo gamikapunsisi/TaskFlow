@@ -27,6 +27,8 @@
 		52812BC32D70BF0000BDB866 /* CampusMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52812BC22D70BF0000BDB866 /* CampusMapView.swift */; };
 		52812BC72D70CE8600BDB866 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52812BC62D70CE8600BDB866 /* FilterView.swift */; };
 		52812BC92D70D17800BDB866 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52812BC82D70D17800BDB866 /* SideMenuView.swift */; };
+		52812BCD2D70DC6100BDB866 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52812BCC2D70DC6100BDB866 /* ProfileView.swift */; };
+		52812BD92D70FF6D00BDB866 /* Colorful Photo Rainbow Facebook Cover-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 52812BD82D70FF6D00BDB866 /* Colorful Photo Rainbow Facebook Cover-2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,8 @@
 		52812BC22D70BF0000BDB866 /* CampusMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusMapView.swift; sourceTree = "<group>"; };
 		52812BC62D70CE8600BDB866 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		52812BC82D70D17800BDB866 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
+		52812BCC2D70DC6100BDB866 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		52812BD82D70FF6D00BDB866 /* Colorful Photo Rainbow Facebook Cover-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Colorful Photo Rainbow Facebook Cover-2.png"; path = "../../../Downloads/Colorful Photo Rainbow Facebook Cover-2.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +133,7 @@
 				520C4B612D6F51B6003B08E2 /* PhoneGuideView1.swift */,
 				52812BC82D70D17800BDB866 /* SideMenuView.swift */,
 				520C4B692D6F58FB003B08E2 /* EventAppView.swift */,
+				52812BCC2D70DC6100BDB866 /* ProfileView.swift */,
 				520C4B6B2D6FA05D003B08E2 /* EventDetailView.swift */,
 				52812BBC2D708F4600BDB866 /* LabListView.swift */,
 				52812BBE2D70B7CE00BDB866 /* LocationDetailView.swift */,
@@ -136,6 +141,7 @@
 				52812BC62D70CE8600BDB866 /* FilterView.swift */,
 				520C4B6F2D6FA5E2003B08E2 /* EventsListView.swift */,
 				520C4B292D6F31B7003B08E2 /* Assets.xcassets */,
+				52812BD82D70FF6D00BDB866 /* Colorful Photo Rainbow Facebook Cover-2.png */,
 				520C4B2B2D6F31B7003B08E2 /* Preview Content */,
 			);
 			path = UniversityN;
@@ -272,6 +278,7 @@
 			files = (
 				520C4B2D2D6F31B7003B08E2 /* Preview Assets.xcassets in Resources */,
 				520C4B2A2D6F31B7003B08E2 /* Assets.xcassets in Resources */,
+				52812BD92D70FF6D00BDB866 /* Colorful Photo Rainbow Facebook Cover-2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +311,7 @@
 				520C4B702D6FA5E2003B08E2 /* EventsListView.swift in Sources */,
 				520C4B502D6F3386003B08E2 /* LoginView.swift in Sources */,
 				520C4B5C2D6F46DC003B08E2 /* Signup.swift in Sources */,
+				52812BCD2D70DC6100BDB866 /* ProfileView.swift in Sources */,
 				520C4B6A2D6F58FB003B08E2 /* EventAppView.swift in Sources */,
 				520C4B622D6F51B6003B08E2 /* PhoneGuideView1.swift in Sources */,
 				520C4B6C2D6FA05D003B08E2 /* EventDetailView.swift in Sources */,

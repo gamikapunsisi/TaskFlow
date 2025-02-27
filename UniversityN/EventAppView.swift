@@ -12,18 +12,20 @@ struct MainEventAppView: View {
                     VStack {
                         //                    categoryChips
                         eventSection(title: "Upcoming Events", events: [
-                            EventData(name: "International Band Music", attendees: "+20 Going", location: "36 Guild Street London, UK"),
-                            EventData(name: "Jo Malone Invitational", attendees: "+15 Going", location: "Radius Gallery, NYC")
+                            EventData(name: "International Band Music", attendees: "+20 Going", location: "Harison Hall", image: "event1", date: "10 JUNE"),
+                            EventData(name: "Jo Malone Invitational", attendees: "+15 Going", location: "Radius Gallery, NYC", image: "event2", date: "15 JUNE")
                         ])
                         inviteFriendsCard
                     }
+                    .padding(.horizontal,20)
                     .padding(.bottom, 50) // Ensure space at the bottom for floating tab bar
                 }
                 bottomTabBar
             }
             .blur(radius: isShowingMenu ? 20 : 0)
             .disabled(isShowingMenu)
-
+            
+            
             if isShowingMenu {
                 SideMenuView(isShowing: $isShowingMenu)
                     .transition(.move(edge: .leading))
@@ -55,32 +57,32 @@ struct MainEventAppView: View {
                         .imageScale(.large)
                         .foregroundColor(.white)
                 }
-
+                
                 Spacer()
-//                Text ("Current Location ")
+                //                Text ("Current Location ")
                 Text("New York, USA")
                     .foregroundColor(.white)
                     .font(.headline) // You can adjust the font size if necessary
-
+                
                 Spacer()
-
+                
                 Button(action: {}) {
                     Image(systemName: "bell")
                         .imageScale(.large)
                         .foregroundColor(.white)
                 }
             }
-            .padding(.horizontal,20) // Maintain horizontal padding for side spacing
+            .padding(.horizontal,30) // Maintain horizontal padding for side spacing
             .padding(.vertical, 8) // Reduce vertical padding to decrease the height
             HStack {
                 TextField("   |    Search...", text: .constant(""))
                     .padding(.leading, 40)
                     .foregroundColor(.primary)
-//                    .background(
-//                        RoundedRectangle(cornerRadius: 10)
-//                            .fill(Color.white)
-//                            .shadow(color: .gray.opacity(0.3), radius: 5, x: 0, y: 2)
-//                    )
+                //                    .background(
+                //                        RoundedRectangle(cornerRadius: 10)
+                //                            .fill(Color.white)
+                //                            .shadow(color: .gray.opacity(0.3), radius: 5, x: 0, y: 2)
+                //                    )
                     .overlay(
                         Image(systemName: "magnifyingglass")
                             .foregroundColor(.white)
@@ -97,7 +99,7 @@ struct MainEventAppView: View {
                 }
             }
             .padding(.top,130)
-            .padding(.horizontal,10) // Maintain horizontal padding for side spacing
+            .padding(.horizontal,20) // Maintain horizontal padding for side spacing
             .padding(.vertical, 8) // Reduce vertical padding to decrease the height
             
         }
@@ -108,50 +110,50 @@ struct MainEventAppView: View {
         
     }
     
-
+    
     
     
     var categoryChips: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 15) {  // Increase spacing between buttons
-                            Button(action: {}) {
-                                Label("Art", systemImage: "paintpalette")
-                                    .foregroundColor(.white)
-                                    .padding()
-                                    .frame(height: 40)
-                                    .background(Color.blue)
-                                    .cornerRadius(22)
-                            }
-                            
-                            Button(action: {}) {
-                                Label("Music", systemImage: "music.note")
-                                    .foregroundColor(.white)
-                                    .padding()
-                                    .frame(height: 40)
-                                    .background(Color.blue)
-                                    .cornerRadius(22)
-                            }
-                            
-                            Button(action: {}) {
-                                Label("Food", systemImage: "fork.knife")
-                                    .foregroundColor(.white)
-                                    .padding()
-                                    .frame(height: 40)
-                                    .background(Color.blue)
-                                    .cornerRadius(22)
-                            }
-                            
-                            Button(action: {}) {
-                                Label("Sports", systemImage: "sportscourt")
-                                    .foregroundColor(.white)
-                                    .padding()
-                                    .frame(height: 40)
-                                    .background(Color.blue)
-                                    .cornerRadius(22)
-                            }
-                        }
-                        .padding(.horizontal)  // Padding for the entire scroll view's horizontal padding
-                        .padding(.bottom,8)
+                Button(action: {}) {
+                    Label("Art", systemImage: "paintpalette")
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(height: 40)
+                        .background(Color.blue)
+                        .cornerRadius(22)
+                }
+                
+                Button(action: {}) {
+                    Label("Music", systemImage: "music.note")
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(height: 40)
+                        .background(Color.blue)
+                        .cornerRadius(22)
+                }
+                
+                Button(action: {}) {
+                    Label("Food", systemImage: "fork.knife")
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(height: 40)
+                        .background(Color.blue)
+                        .cornerRadius(22)
+                }
+                
+                Button(action: {}) {
+                    Label("Sports", systemImage: "sportscourt")
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(height: 40)
+                        .background(Color.blue)
+                        .cornerRadius(22)
+                }
+            }
+            .padding(.horizontal,24)  // Padding for the entire scroll view's horizontal padding
+            .padding(.bottom,8)
         }
     }
     
@@ -159,7 +161,7 @@ struct MainEventAppView: View {
         VStack(alignment: .leading) {
             HStack {
                 Text(title)
-                    .font(.headline)
+                    .font(.title3)
                     .bold()
                 Spacer()
                 Button("See All") {}
@@ -170,83 +172,107 @@ struct MainEventAppView: View {
                 HStack(spacing: 20) {
                     ForEach(events) { event in
                         VStack {
-                            Image("placeholder") // Replace "placeholder" with your actual image resource
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 150, height: 100)
-                                .cornerRadius(10)
+                            ZStack(alignment: .topLeading) {
+                                Image("event") // Use actual images in your asset catalog
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 300, height: 200)
+                                    .clipped()
+                                    .cornerRadius(15)
+                                    .shadow(radius: 5)
+                                
+                                Text(event.date)
+                                    .font(.caption)
+                                    .fontWeight(.bold)
+                                    .padding(8)
+                                    .background(Color.white.opacity(0.1))
+                                    .foregroundColor(.red)
+                                    .cornerRadius(8)
+                                    .padding(10)
+                            }
                             
-                            Text(event.name)
-                                .bold()
-                            Text(event.attendees)
-                            Text(event.location)
-                                .font(.caption)
-                                .foregroundColor(.gray)
+                            HStack {
+                                Text(event.name)
+                                    .bold()
+                                    .lineLimit(1)
+                                Spacer()
+                            }
+                            .padding(.horizontal)
+                            
+                            HStack {
+                                HStack {
+                                    Image(systemName: "person.3.fill")
+                                    Text(event.attendees)
+                                }
+                                .padding(.trailing, 5)
+                                
+                                Spacer()
+                                
+                                Text(event.location)
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+                            }
+                            .padding([.horizontal, .bottom])
                         }
-                        .frame(width: 230, height: 300)
                         .background(Color.white)
-                        .cornerRadius(10)
+                        .cornerRadius(15)
                         .shadow(radius: 5)
+                        .frame(width: 300, height: 280)
                     }
                 }
                 .padding(.horizontal)
-                .padding(.top,10)
-                .padding(.bottom,10)
             }
         }
     }
     
     var inviteFriendsCard: some View {
         ZStack {
-            // Card background
-            RoundedRectangle(cornerRadius: 15, style: .continuous)
-                .fill(LinearGradient(gradient: Gradient(colors: [Color.blue.opacity(0.6), Color.blue.opacity(0.3)]), startPoint: .top, endPoint: .bottom))
-                .shadow(radius: 10)
-                .padding()
-            
-            // Content
-            VStack(spacing: 20) {
-                Text("Invite your friends")
-                    .bold()
-//                    .font(.title)
-                    .font(.system(size: 24))
-                    .foregroundColor(.white)
-                
-                Text("Get $20 for ticket")
-//                    .font(.headline)
-                    .font(.system(size: 14))
-                    .foregroundColor(.white)
-                
-                Button(action: {}) {
-                    Text("INVITE")
-                        .bold()
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(width: 140, height: 44)
-                        .background(Color.cyan)
-                        .cornerRadius(5)
-                        
-                }
-                .shadow(radius: 5)
-            }
-            .padding()
-            
-            // Decorative graphics and illustrations
-            HStack {
-                Spacer()
-                VStack {
-                    Image("giftBox") // Ensure you have a 'giftBox' asset
+                    // Background Image
+                    Image("nibm")  // Ensure you have 'GiftBox' asset in your assets
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 100, height: 100)
-                    Spacer()
+                        .scaledToFill()  // Fill the entire background
+                        .frame(height: 160)
+                        .cornerRadius(10)
+                        .clipped()  // Ensure the image does not bleed outside the corner radius
+                        .shadow(radius: 10)
+//                        .padding(.horizontal)
+                    
+                    // Overlay to enhance text visibility
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(Color.black.opacity(0.1))  // Semi-transparent overlay
+                        .frame( height: 160)
+//                        .padding(.horizontal)
+
+                    VStack {
+//                        Text("Invite your friends")
+//                            .bold()
+//                            .foregroundColor(.black)
+//                            .font(.title3)
+//
+                        
+//                        Text("Get $20 for ticket")
+//                            .foregroundColor(.black)
+//                            .font(.footnote)
+//                            .padding(.bottom, 20)
+                        
+//                        Button(action: {}) {
+//                            Text("INVITE ")
+//                                .bold()
+//                                .foregroundColor(.white)
+//                                .padding(.vertical, 10)
+//                                .padding(.horizontal, 30)
+//                                .background(Color.black.opacity(0.1))
+//                                .cornerRadius(10)
+//                                .shadow(radius: 5)
+//
+//                        }
+                    }
                 }
-                .padding(.top, 50)
+                .frame(height: 200)
+                .padding(.horizontal)
             }
-            
-        }
-        .frame(width: 390, height: 200)
-    }
+    
+
     
     var bottomTabBar: some View {
         ZStack {
@@ -340,6 +366,8 @@ struct EventData: Identifiable {
     var name: String
     var attendees: String
     var location: String
+    var image: String
+    var date: String
 }
 
 struct MainEventAppView_Previews: PreviewProvider {

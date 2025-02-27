@@ -26,6 +26,7 @@
 		52812BBF2D70B7CE00BDB866 /* LocationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52812BBE2D70B7CE00BDB866 /* LocationDetailView.swift */; };
 		52812BC32D70BF0000BDB866 /* CampusMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52812BC22D70BF0000BDB866 /* CampusMapView.swift */; };
 		52812BC72D70CE8600BDB866 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52812BC62D70CE8600BDB866 /* FilterView.swift */; };
+		52812BC92D70D17800BDB866 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52812BC82D70D17800BDB866 /* SideMenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		52812BBE2D70B7CE00BDB866 /* LocationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailView.swift; sourceTree = "<group>"; };
 		52812BC22D70BF0000BDB866 /* CampusMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusMapView.swift; sourceTree = "<group>"; };
 		52812BC62D70CE8600BDB866 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
+		52812BC82D70D17800BDB866 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				520C4B5D2D6F5020003B08E2 /* Verification.swift */,
 				520C4B5F2D6F50BE003B08E2 /* ResetPasswordView.swift */,
 				520C4B612D6F51B6003B08E2 /* PhoneGuideView1.swift */,
+				52812BC82D70D17800BDB866 /* SideMenuView.swift */,
 				520C4B692D6F58FB003B08E2 /* EventAppView.swift */,
 				520C4B6B2D6FA05D003B08E2 /* EventDetailView.swift */,
 				52812BBC2D708F4600BDB866 /* LabListView.swift */,
@@ -305,6 +308,7 @@
 				520C4B622D6F51B6003B08E2 /* PhoneGuideView1.swift in Sources */,
 				520C4B6C2D6FA05D003B08E2 /* EventDetailView.swift in Sources */,
 				520C4B602D6F50BE003B08E2 /* ResetPasswordView.swift in Sources */,
+				52812BC92D70D17800BDB866 /* SideMenuView.swift in Sources */,
 				520C4B282D6F31B6003B08E2 /* ContentView.swift in Sources */,
 				520C4B262D6F31B6003B08E2 /* UniversityNApp.swift in Sources */,
 			);

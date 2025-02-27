@@ -2,25 +2,42 @@ import SwiftUI
 
 struct MainEventAppView: View {
     @State private var selectedTab = 0
+    @State private var isShowingMenu = false
     var body: some View {
-        VStack {
-            topNavigationBar
-            categoryChips
-            ScrollView(showsIndicators: false) {
-                VStack {
-//                    categoryChips
+        ZStack{
+            VStack {
+                topNavigationBar
+                categoryChips
+                ScrollView(showsIndicators: false) {
+                    VStack {
+                        //                    categoryChips
                         eventSection(title: "Upcoming Events", events: [
-                        EventData(name: "International Band Music", attendees: "+20 Going", location: "36 Guild Street London, UK"),
-                        EventData(name: "Jo Malone Invitational", attendees: "+15 Going", location: "Radius Gallery, NYC")
-                    ])
-                    inviteFriendsCard
+                            EventData(name: "International Band Music", attendees: "+20 Going", location: "36 Guild Street London, UK"),
+                            EventData(name: "Jo Malone Invitational", attendees: "+15 Going", location: "Radius Gallery, NYC")
+                        ])
+                        inviteFriendsCard
+                    }
+                    .padding(.bottom, 50) // Ensure space at the bottom for floating tab bar
                 }
-                .padding(.bottom, 50) // Ensure space at the bottom for floating tab bar
+                bottomTabBar
             }
-            bottomTabBar
+            .blur(radius: isShowingMenu ? 20 : 0)
+            .disabled(isShowingMenu)
+
+            if isShowingMenu {
+                SideMenuView(isShowing: $isShowingMenu)
+                    .transition(.move(edge: .leading))
+            }
         }
         .edgesIgnoringSafeArea(.top) // Allow the top bar to extend into the status bar area
         .background(Color("Background")) // Use a named color or define a custom color
+        .onTapGesture {
+            if isShowingMenu {
+                withAnimation {
+                    isShowingMenu = false
+                }
+            }
+        }
     }
     
     // MARK: - View Components
@@ -29,7 +46,11 @@ struct MainEventAppView: View {
             Color.blue
                 .edgesIgnoringSafeArea(.top) // Extending the blue background to the top edge of the screen
             HStack {
-                Button(action: {}) {
+                Button(action: {
+                    withAnimation {
+                        isShowingMenu.toggle()
+                    }
+                }) {
                     Image(systemName: "text.alignleft")
                         .imageScale(.large)
                         .foregroundColor(.white)
@@ -301,6 +322,15 @@ struct MainEventAppView: View {
                     .frame(width: 50, height: 50)
             }
             .offset(y: -30) // Adjust the offset to raise the button
+        }
+    }
+    private func getTabIcon(_ index: Int) -> String {
+        switch index {
+        case 0: return "house.fill"
+        case 1: return "calendar"
+        case 2: return "map"
+        case 3: return "person"
+        default: return "circle"
         }
     }
 }

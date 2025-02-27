@@ -19,7 +19,7 @@ struct SignUpView: View {
                 Spacer()
                 Text("Sign up")
                     .font(.headline)
-//                Spacer()
+                Spacer()
             }
             .padding()
 

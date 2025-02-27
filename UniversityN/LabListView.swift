@@ -1,7 +1,9 @@
 import SwiftUI
 
 struct LabListView: View {
-    @State private var selectedTab = 0
+    @State private var selectedTab = 2
+    @State private var selectedCategory = "All"  // State to track the selected category
+
     var body: some View {
         NavigationView {
             VStack {
@@ -14,7 +16,7 @@ struct LabListView: View {
                 // Lab grid list
                 ScrollView {
                     LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
-                        ForEach(labData) { lab in
+                        ForEach(filteredLabs) { lab in  // Use filteredLabs instead of labData
                             LabCard(lab: lab)
                         }
                     }
@@ -39,7 +41,7 @@ struct LabListView: View {
 
                 Spacer()
 
-                Text("Second Floor, Mac LAB")
+                Text("Third Floor, Mac LAB")
                     .fontWeight(.semibold)
                 
                 Spacer()
@@ -64,10 +66,12 @@ struct LabListView: View {
     var categoryChips: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                Chip(label: "Labs")
-                Chip(label: "Canteen")
-                Chip(label: "Office")
-                Chip(label: "Library")
+                ForEach(["Labs", "Canteen", "Office", "Library", "All"], id: \.self) { category in
+                    Chip(label: category, isSelected: selectedCategory == category)
+                        .onTapGesture {
+                            selectedCategory = category
+                        }
+                }
             }
             .padding(.horizontal)
         }
@@ -149,6 +153,13 @@ struct LabListView: View {
             .offset(y: -30) // Adjust the offset to raise the button
         }
     }
+    var filteredLabs: [Lab] {
+        if selectedCategory == "All" {
+            return labData
+        } else {
+            return labData.filter { $0.category == selectedCategory }
+        }
+    }
 }
 
 struct LabCard: View {
@@ -159,7 +170,7 @@ struct LabCard: View {
             Image(lab.imageName)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(height: 150)
+                .frame(width:160 ,height: 100)
                 .clipped()
                 .cornerRadius(10)
             
@@ -189,14 +200,16 @@ struct SearchBar: View {
     }
 }
 
+
 struct Chip: View {
     var label: String
+    var isSelected: Bool
 
     var body: some View {
         Text(label)
             .padding(.horizontal, 16)
             .padding(.vertical, 8)
-            .background(Color.blue)
+            .background(isSelected ? Color.black.opacity(0.5) : Color.blue)
             .foregroundColor(.white)
             .cornerRadius(15)
     }
@@ -209,13 +222,18 @@ struct Lab: Identifiable {
     let name: String
     let floor: String
     let imageName: String
+    let category: String  // Add a category for each lab
 }
 
 let labData = [
-    Lab(name: "Chemistry Lab", floor: "1", imageName: "chemistry_lab"),
-    Lab(name: "Computer Lab", floor: "2", imageName: "computer_lab"),
-    Lab(name: "Mac Lab", floor: "3", imageName: "mac_lab"),
-    Lab(name: "Research Lab", floor: "3", imageName: "research_lab")
+    Lab(name: "Computer Lab", floor: "2", imageName: "computer_lab", category: "Labs"),
+    Lab(name: "Mac Lab", floor: "3", imageName: "mac_lab", category: "Labs"),
+    Lab(name: "Research Lab", floor: "3", imageName: "research_lab", category: "Labs"),
+    Lab(name: "Main Canteen", floor: "Ground", imageName: "canteen", category: "Canteen"),
+    Lab(name: "Admin Office", floor: "2", imageName: "admin_office", category: "Office"),
+    Lab(name: "Accounting Office", floor: "2", imageName: "ac", category: "Office"),
+    Lab(name: "HR Office", floor: "2", imageName: "hr_office", category: "Office")
+    // Add more labs and categories as needed
 ]
 
 struct LabListView_Previews: PreviewProvider {

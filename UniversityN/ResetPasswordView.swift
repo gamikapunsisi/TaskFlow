@@ -48,6 +48,8 @@ struct ResetPasswordView: View {
             }
             .padding(.horizontal)
             .padding(.top, 20)
+            .navigationBarHidden(true)
+
             
             Spacer()
         }

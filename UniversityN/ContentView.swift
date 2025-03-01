@@ -1,8 +1,6 @@
 //
 //  ContentView.swift
-//  UniversityN
-//
-//  Created by Supun Basura on 2025-02-26.
+
 //
 
 import SwiftUI

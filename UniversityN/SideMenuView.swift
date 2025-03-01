@@ -22,6 +22,7 @@ struct SideMenuView: View {
                 VStack(alignment: .leading, spacing: 0) {
                     // Profile
                     VStack(alignment: .leading) {
+                        
                         Image("profile")  // Make sure 'profile' is the correct name of your image asset
                             .resizable()
                             .scaledToFill()
@@ -34,6 +35,7 @@ struct SideMenuView: View {
                             .font(.headline)
                             .foregroundColor(.black)
 
+                        
                         Text("View Profile")
                             .font(.caption)
                             .foregroundColor(.black.opacity(0.7))
@@ -65,6 +67,8 @@ struct SideMenuView: View {
             }
         }
         .edgesIgnoringSafeArea(.all)
+        .navigationBarHidden(true)
+
     }
 }
 

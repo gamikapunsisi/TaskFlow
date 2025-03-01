@@ -50,10 +50,12 @@ struct ZoomableScrollView: UIViewRepresentable {
             return scrollView.subviews.first
         }
     }
+    
 }
 
+
 struct CampusMapView: View {
-    @State private var selectedTab = 0
+    @State private var selectedTab = 2
     var body: some View {
         VStack {
             topSearchAndFilterBar
@@ -106,9 +108,11 @@ struct CampusMapView: View {
                 Button(action: {
                     selectedTab = 0
                 }) {
-                    Image(systemName: selectedTab == 0 ? "house.fill" : "house")
-                        .font(.title2)
-                        .foregroundColor(selectedTab == 0 ? .blue : .gray)
+                    NavigationLink(destination: MainEventAppView()) {
+                        Image(systemName: selectedTab == 0 ? "house.fill" : "house")
+                            .font(.title2)
+                            .foregroundColor(selectedTab == 0 ? .blue : .gray)
+                    }
                 }
                 .frame(maxWidth: .infinity)
                 
@@ -134,9 +138,11 @@ struct CampusMapView: View {
                 Button(action: {
                     selectedTab = 2
                 }) {
-                    Image(systemName: selectedTab == 2 ? "map.fill" : "map")
-                        .font(.title2)
-                        .foregroundColor(selectedTab == 2 ? .blue : .gray)
+                    NavigationLink(destination: LabListView()) {
+                        Image(systemName: selectedTab == 2 ? "map.fill" : "map")
+                            .font(.title2)
+                            .foregroundColor(selectedTab == 2 ? .blue : .gray)
+                    }
                 }
                 .frame(maxWidth: .infinity)
                 
@@ -146,9 +152,11 @@ struct CampusMapView: View {
                 Button(action: {
                     selectedTab = 3
                 }) {
-                    Image(systemName: selectedTab == 3 ? "person.fill" : "person")
-                        .font(.title2)
-                        .foregroundColor(selectedTab == 3 ? .blue : .gray)
+                    NavigationLink(destination: ProfileView()) {
+                        Image(systemName: selectedTab == 3 ? "person.fill" : "person")
+                            .font(.title2)
+                            .foregroundColor(selectedTab == 3 ? .blue : .gray)
+                    }
                 }
                 .frame(maxWidth: .infinity)
             }
@@ -171,6 +179,7 @@ struct CampusMapView: View {
                     .shadow(radius: 10)
                     .frame(width: 50, height: 50)
             }
+            .navigationBarHidden(true)
             .offset(y: -30) // Adjust the offset to raise the button
         }
     }

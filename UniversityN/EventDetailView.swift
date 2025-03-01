@@ -3,6 +3,7 @@ import SwiftUI
 struct EventDetailView: View {
     var body: some View {
         VStack {
+            
             ScrollView {
                 VStack(alignment: .leading) {
                     // Event Banner
@@ -167,15 +168,19 @@ struct EventDetailView: View {
                         .cornerRadius(10)
                         
                     }
+                    
                     .padding(.horizontal, 16)
                     .padding(.top, 20)
                     .padding(.bottom, 40)
                 }
+//                .navigationBarHidden(true)
             }
+//            .navigationBarHidden(true)
         }
         .edgesIgnoringSafeArea(.top)
-    }
-}
+//        .navigationBarHidden(true)
+
+    }}
 
 struct EventDetailView_Previews: PreviewProvider {
     static var previews: some View {

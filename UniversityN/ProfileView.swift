@@ -62,6 +62,7 @@ struct ProfileView: View {
                 }
             }
             .background(Color(.systemBackground))
+//            .navigationBarHidden(true)
             .edgesIgnoringSafeArea(.all)
             .navigationBarTitle("Profile", displayMode: .inline)
             .navigationBarItems(leading: Button(action: {
@@ -71,6 +72,7 @@ struct ProfileView: View {
                     .foregroundColor(.blue)
             })
         }
+        .navigationBarHidden(true)
     }
 }
 

@@ -8,15 +8,15 @@ struct VerificationView: View {
 
     var body: some View {
         VStack(alignment: .center, spacing: 20) {
-            HStack {
-                Button(action: {
-                    // Action to go back
-                }) {
-                    Image(systemName: "chevron.left")
-                }
-                Spacer()
-            }
-            .padding()
+//            HStack {
+//                Button(action: {
+//                    // Action to go back
+//                }) {
+//                    Image(systemName: "chevron.left")
+//                }
+//                Spacer()
+//            }
+//            .padding()
             
             Text("Verification")
                 .font(.title)
@@ -42,9 +42,10 @@ struct VerificationView: View {
                 // Action for continue button
             }) {
                 HStack {
-                    Text("CONTINUE")
-                    Image(systemName: "arrow.right")
-                }
+                    NavigationLink(destination: MainEventAppView()) {
+                        Text("CONTINUE")
+                        Image(systemName: "arrow.right")
+                    }}
                 .foregroundColor(.white)
                 .padding()
                 .frame(maxWidth: .infinity)
@@ -63,9 +64,10 @@ struct VerificationView: View {
             Spacer()
 
             NumericPad(numbers: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"], code: $code, currentIndex: $currentIndex)
-
         }
         .padding()
+        .navigationBarHidden(true)
+
     }
 }
 

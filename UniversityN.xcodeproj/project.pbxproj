@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1743F6732D71C40000372929 /* ScreenNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1743F6722D71C3FE00372929 /* ScreenNames.swift */; };
+		1743F6752D71D7C300372929 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1743F6742D71D7BB00372929 /* Router.swift */; };
+		1743F6AE2D72187B00372929 /* MyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1743F6AD2D72185E00372929 /* MyApp.swift */; };
 		520C4B262D6F31B6003B08E2 /* UniversityNApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520C4B252D6F31B6003B08E2 /* UniversityNApp.swift */; };
 		520C4B282D6F31B6003B08E2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520C4B272D6F31B6003B08E2 /* ContentView.swift */; };
 		520C4B2A2D6F31B7003B08E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 520C4B292D6F31B7003B08E2 /* Assets.xcassets */; };
@@ -49,6 +52,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1743F6422D71A32C00372929 /* Untitled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Untitled.swift; sourceTree = "<group>"; };
+		1743F6722D71C3FE00372929 /* ScreenNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenNames.swift; sourceTree = "<group>"; };
+		1743F6742D71D7BB00372929 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		1743F6AD2D72185E00372929 /* MyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyApp.swift; sourceTree = "<group>"; };
 		520C4B222D6F31B6003B08E2 /* UniversityN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UniversityN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		520C4B252D6F31B6003B08E2 /* UniversityNApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversityNApp.swift; sourceTree = "<group>"; };
 		520C4B272D6F31B6003B08E2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -75,6 +82,10 @@
 		52812BCC2D70DC6100BDB866 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		52812BDA2D7101EF00BDB866 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		1743F6762D720D9900372929 /* Navigation */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Navigation; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		520C4B1F2D6F31B6003B08E2 /* Frameworks */ = {
@@ -124,6 +135,11 @@
 		520C4B242D6F31B6003B08E2 /* UniversityN */ = {
 			isa = PBXGroup;
 			children = (
+				1743F6AD2D72185E00372929 /* MyApp.swift */,
+				1743F6762D720D9900372929 /* Navigation */,
+				1743F6742D71D7BB00372929 /* Router.swift */,
+				1743F6722D71C3FE00372929 /* ScreenNames.swift */,
+				1743F6422D71A32C00372929 /* Untitled.swift */,
 				520C4B252D6F31B6003B08E2 /* UniversityNApp.swift */,
 				520C4B272D6F31B6003B08E2 /* ContentView.swift */,
 				520C4B4F2D6F3386003B08E2 /* LoginView.swift */,
@@ -187,6 +203,9 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				1743F6762D720D9900372929 /* Navigation */,
+			);
 			name = UniversityN;
 			productName = UniversityN;
 			productReference = 520C4B222D6F31B6003B08E2 /* UniversityN.app */;
@@ -236,7 +255,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					520C4B212D6F31B6003B08E2 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -308,12 +327,15 @@
 				520C4B5E2D6F5020003B08E2 /* Verification.swift in Sources */,
 				52812BDB2D7101EF00BDB866 /* LoadingView.swift in Sources */,
 				52812BBF2D70B7CE00BDB866 /* LocationDetailView.swift in Sources */,
+				1743F6752D71D7C300372929 /* Router.swift in Sources */,
 				520C4B702D6FA5E2003B08E2 /* EventsListView.swift in Sources */,
 				520C4B502D6F3386003B08E2 /* LoginView.swift in Sources */,
 				520C4B5C2D6F46DC003B08E2 /* Signup.swift in Sources */,
 				52812BCD2D70DC6100BDB866 /* ProfileView.swift in Sources */,
 				520C4B6A2D6F58FB003B08E2 /* EventAppView.swift in Sources */,
 				520C4B622D6F51B6003B08E2 /* PhoneGuideView1.swift in Sources */,
+				1743F6AE2D72187B00372929 /* MyApp.swift in Sources */,
+				1743F6732D71C40000372929 /* ScreenNames.swift in Sources */,
 				520C4B6C2D6FA05D003B08E2 /* EventDetailView.swift in Sources */,
 				520C4B602D6F50BE003B08E2 /* ResetPasswordView.swift in Sources */,
 				52812BC92D70D17800BDB866 /* SideMenuView.swift in Sources */,
@@ -359,6 +381,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -391,6 +414,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -419,6 +443,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -451,6 +476,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -484,6 +510,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -512,6 +539,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -528,7 +556,6 @@
 		520C4B4A2D6F31B8003B08E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -547,7 +574,6 @@
 		520C4B4B2D6F31B8003B08E2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -566,7 +592,6 @@
 		520C4B4D2D6F31B8003B08E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -583,7 +608,6 @@
 		520C4B4E2D6F31B8003B08E2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;

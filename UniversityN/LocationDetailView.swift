@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct LocationDetailView: View {
-    @State private var selectedTab = 0
+    @State private var selectedTab = 2
     @State private var selectedFloor = "3 Floor"
 
     var body: some View {
@@ -20,6 +20,7 @@ struct LocationDetailView: View {
 
             // Bottom tab bar is assumed to be handled by a parent TabView
         }
+        .navigationBarHidden(true)
         .navigationTitle("Your Location")
         .navigationBarTitleDisplayMode(.inline)
         .edgesIgnoringSafeArea(.bottom)
@@ -159,14 +160,16 @@ struct LocationDetailView: View {
             Button(action: {
                 // Action for the center button
             }) {
-                Image(systemName: "plus")
-                    .resizable()
-                    .padding(15)
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .clipShape(Circle())
-                    .shadow(radius: 10)
-                    .frame(width: 50, height: 50)
+                NavigationLink(destination: CampusMapView()) {
+                    Image(systemName: "plus")
+                        .resizable()
+                        .padding(15)
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .clipShape(Circle())
+                        .shadow(radius: 10)
+                        .frame(width: 50, height: 50)
+                }
             }
             .offset(y: -30) // Adjust the offset to raise the button
         }

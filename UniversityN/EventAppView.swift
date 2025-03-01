@@ -33,10 +33,12 @@ struct MainEventAppView: View {
         }
         .edgesIgnoringSafeArea(.top) // Allow the top bar to extend into the status bar area
         .background(Color("Background")) // Use a named color or define a custom color
+        .navigationBarHidden(true)
         .onTapGesture {
             if isShowingMenu {
                 withAnimation {
                     isShowingMenu = false
+                    
                 }
             }
         }
@@ -91,6 +93,7 @@ struct MainEventAppView: View {
                     )
                 
                 Button(action: {}) {
+                    
                     Image(systemName: "slider.horizontal.3")
                         .foregroundColor(.white)
                         .padding()
@@ -173,22 +176,24 @@ struct MainEventAppView: View {
                     ForEach(events) { event in
                         VStack {
                             ZStack(alignment: .topLeading) {
-                                Image("event") // Use actual images in your asset catalog
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 300, height: 200)
-                                    .clipped()
-                                    .cornerRadius(15)
-                                    .shadow(radius: 5)
-                                
-                                Text(event.date)
-                                    .font(.caption)
-                                    .fontWeight(.bold)
-                                    .padding(8)
-                                    .background(Color.white.opacity(0.1))
-                                    .foregroundColor(.red)
-                                    .cornerRadius(8)
-                                    .padding(10)
+                                NavigationLink(destination: EventDetailView()) {
+                                    Image("event") // Use actual images in your asset catalog
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 300, height: 200)
+                                        .clipped()
+                                        .cornerRadius(15)
+                                        .shadow(radius: 5)
+                                    
+                                    Text(event.date)
+                                        .font(.caption)
+                                        .fontWeight(.bold)
+                                        .padding(8)
+                                        .background(Color.white.opacity(0.1))
+                                        .foregroundColor(.red)
+                                        .cornerRadius(8)
+                                        .padding(10)
+                                }
                             }
                             
                             HStack {
@@ -226,51 +231,53 @@ struct MainEventAppView: View {
     }
     
     var inviteFriendsCard: some View {
-        ZStack {
-                    // Background Image
-                    Image("nibm")  // Ensure you have 'GiftBox' asset in your assets
-                        .resizable()
-                        .scaledToFill()  // Fill the entire background
-                        .frame(height: 160)
-                        .cornerRadius(10)
-                        .clipped()  // Ensure the image does not bleed outside the corner radius
-                        .shadow(radius: 10)
-//                        .padding(.horizontal)
+        NavigationLink(destination: CampusMapView()) {
+            ZStack {
+                // Background Image
+                Image("nibm")  // Ensure you have 'GiftBox' asset in your assets
+                    .resizable()
+                    .scaledToFill()  // Fill the entire background
+                    .frame(height: 160)
+                    .cornerRadius(10)
+                    .clipped()  // Ensure the image does not bleed outside the corner radius
+                    .shadow(radius: 10)
+                //                        .padding(.horizontal)
+                
+                // Overlay to enhance text visibility
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.black.opacity(0.1))  // Semi-transparent overlay
+                    .frame( height: 160)
+                //                        .padding(.horizontal)
+                
+                VStack {
+                    //                        Text("Invite your friends")
+                    //                            .bold()
+                    //                            .foregroundColor(.black)
+                    //                            .font(.title3)
+                    //
                     
-                    // Overlay to enhance text visibility
-                    RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.black.opacity(0.1))  // Semi-transparent overlay
-                        .frame( height: 160)
-//                        .padding(.horizontal)
-
-                    VStack {
-//                        Text("Invite your friends")
-//                            .bold()
-//                            .foregroundColor(.black)
-//                            .font(.title3)
-//
-                        
-//                        Text("Get $20 for ticket")
-//                            .foregroundColor(.black)
-//                            .font(.footnote)
-//                            .padding(.bottom, 20)
-                        
-//                        Button(action: {}) {
-//                            Text("INVITE ")
-//                                .bold()
-//                                .foregroundColor(.white)
-//                                .padding(.vertical, 10)
-//                                .padding(.horizontal, 30)
-//                                .background(Color.black.opacity(0.1))
-//                                .cornerRadius(10)
-//                                .shadow(radius: 5)
-//
-//                        }
-                    }
+                    //                        Text("Get $20 for ticket")
+                    //                            .foregroundColor(.black)
+                    //                            .font(.footnote)
+                    //                            .padding(.bottom, 20)
+                    
+                    //                        Button(action: {}) {
+                    //                            Text("INVITE ")
+                    //                                .bold()
+                    //                                .foregroundColor(.white)
+                    //                                .padding(.vertical, 10)
+                    //                                .padding(.horizontal, 30)
+                    //                                .background(Color.black.opacity(0.1))
+                    //                                .cornerRadius(10)
+                    //                                .shadow(radius: 5)
+                    //
+                    //                        }
                 }
-                .frame(height: 200)
-                .padding(.horizontal)
             }
+            .frame(height: 200)
+            .padding(.horizontal)
+        }
+    }
     
 
     
@@ -294,6 +301,7 @@ struct MainEventAppView: View {
                 Button(action: {
                     selectedTab = 1
                 }) {
+                    
                     Image(systemName: selectedTab == 1 ? "calendar.circle.fill" : "calendar.circle")
                         .font(.title2)
                         .foregroundColor(selectedTab == 1 ? .blue : .gray)
@@ -310,9 +318,11 @@ struct MainEventAppView: View {
                 Button(action: {
                     selectedTab = 2
                 }) {
-                    Image(systemName: selectedTab == 2 ? "map.fill" : "map")
-                        .font(.title2)
-                        .foregroundColor(selectedTab == 2 ? .blue : .gray)
+                    NavigationLink(destination: LabListView()) {
+                        Image(systemName: selectedTab == 2 ? "map.fill" : "map")
+                            .font(.title2)
+                            .foregroundColor(selectedTab == 2 ? .blue : .gray)
+                    }
                 }
                 .frame(maxWidth: .infinity)
                 
@@ -322,9 +332,11 @@ struct MainEventAppView: View {
                 Button(action: {
                     selectedTab = 3
                 }) {
-                    Image(systemName: selectedTab == 3 ? "person.fill" : "person")
-                        .font(.title2)
-                        .foregroundColor(selectedTab == 3 ? .blue : .gray)
+                    NavigationLink(destination: ProfileView()) {
+                        Image(systemName: selectedTab == 3 ? "person.fill" : "person")
+                            .font(.title2)
+                            .foregroundColor(selectedTab == 3 ? .blue : .gray)
+                    }
                 }
                 .frame(maxWidth: .infinity)
             }

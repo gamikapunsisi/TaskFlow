@@ -79,6 +79,8 @@ struct AppContent: View {
          }
          .background(Color(.systemGray6))
          .edgesIgnoringSafeArea(.all)
+         .navigationBarHidden(true)
+
      }
  }
 

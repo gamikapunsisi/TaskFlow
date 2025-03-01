@@ -24,8 +24,8 @@ struct LabListView: View {
                 }
                 bottomTabBar
             }
-            .navigationBarHidden(true)
         }
+        .navigationBarHidden(true)
     }
 
     var topSearchAndFilterBar: some View {
@@ -60,6 +60,7 @@ struct LabListView: View {
             SearchBar()
                 .padding(.horizontal)
                 .padding(.top, 10)
+                .navigationBarHidden(true)
         }
     }
 
@@ -85,9 +86,11 @@ struct LabListView: View {
                 Button(action: {
                     selectedTab = 0
                 }) {
-                    Image(systemName: selectedTab == 0 ? "house.fill" : "house")
-                        .font(.title2)
-                        .foregroundColor(selectedTab == 0 ? .blue : .gray)
+                    NavigationLink(destination: MainEventAppView()) {
+                        Image(systemName: selectedTab == 0 ? "house.fill" : "house")
+                            .font(.title2)
+                            .foregroundColor(selectedTab == 0 ? .blue : .gray)
+                    }
                 }
                 .frame(maxWidth: .infinity)
                 
@@ -113,9 +116,11 @@ struct LabListView: View {
                 Button(action: {
                     selectedTab = 2
                 }) {
-                    Image(systemName: selectedTab == 2 ? "map.fill" : "map")
-                        .font(.title2)
-                        .foregroundColor(selectedTab == 2 ? .blue : .gray)
+                    NavigationLink(destination: LabListView()) {
+                        Image(systemName: selectedTab == 2 ? "map.fill" : "map")
+                            .font(.title2)
+                            .foregroundColor(selectedTab == 2 ? .blue : .gray)
+                    }
                 }
                 .frame(maxWidth: .infinity)
                 
@@ -125,9 +130,11 @@ struct LabListView: View {
                 Button(action: {
                     selectedTab = 3
                 }) {
-                    Image(systemName: selectedTab == 3 ? "person.fill" : "person")
-                        .font(.title2)
-                        .foregroundColor(selectedTab == 3 ? .blue : .gray)
+                    NavigationLink(destination: ProfileView()) {
+                        Image(systemName: selectedTab == 3 ? "person.fill" : "person")
+                            .font(.title2)
+                            .foregroundColor(selectedTab == 3 ? .blue : .gray)
+                    }
                 }
                 .frame(maxWidth: .infinity)
             }
@@ -141,14 +148,16 @@ struct LabListView: View {
             Button(action: {
                 // Action for the center button
             }) {
-                Image(systemName: "plus")
-                    .resizable()
-                    .padding(15)
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .clipShape(Circle())
-                    .shadow(radius: 10)
-                    .frame(width: 50, height: 50)
+                NavigationLink(destination: CampusMapView()) {
+                    Image(systemName: "plus")
+                        .resizable()
+                        .padding(15)
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .clipShape(Circle())
+                        .shadow(radius: 10)
+                        .frame(width: 50, height: 50)
+                }
             }
             .offset(y: -30) // Adjust the offset to raise the button
         }
@@ -166,20 +175,22 @@ struct LabCard: View {
     let lab: Lab
 
     var body: some View {
-        VStack {
-            Image(lab.imageName)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width:160 ,height: 100)
-                .clipped()
-                .cornerRadius(10)
-            
-            Text(lab.name)
-                .fontWeight(.medium)
-            
-            Text("\(lab.floor) floor")
-                .font(.caption)
-                .foregroundColor(.gray)
+        NavigationLink(destination: LocationDetailView()) {
+            VStack {
+                Image(lab.imageName)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width:160 ,height: 100)
+                    .clipped()
+                    .cornerRadius(10)
+                
+                Text(lab.name)
+                    .fontWeight(.medium)
+                
+                Text("\(lab.floor) floor")
+                    .font(.caption)
+                    .foregroundColor(.gray)
+            }
         }
         .padding(.all, 10)
         .background(Color.white)

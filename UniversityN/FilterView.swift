@@ -29,6 +29,7 @@ struct FilterView: View {
                     .padding()
                     .background(Color(.systemGroupedBackground))
                 }
+                .navigationBarHidden(true)
                 .navigationTitle("Filter")
                 .navigationBarItems(trailing: Button(action: {}) {
                     Image(systemName: "xmark").foregroundColor(.gray)

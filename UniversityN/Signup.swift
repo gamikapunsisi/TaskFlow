@@ -102,6 +102,7 @@ struct SignUpView: View {
             Button("Already have an account? Sign in") {
                 // Action for switching to sign in
             }
+            .navigationBarHidden(true)
             .padding(.bottom)
 
 //            Image("footer") // Ensure this image is in your assets

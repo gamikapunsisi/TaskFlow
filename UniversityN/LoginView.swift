@@ -1,4 +1,6 @@
 import SwiftUI
+import LocalAuthentication
+
 
 struct LoginView: View {
     @State private var email: String = ""
@@ -10,10 +12,10 @@ struct LoginView: View {
         NavigationView {  // Using NavigationView for iOS 15 and below
             VStack {
                 // Logo
-                Image("logo") // Ensure this image is in your assets
+                Image("taskflowlogo") // Ensure this image is in your assets
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 350, height: 150)
+                    .frame(width: 200, height: 150)
                     .padding(.top, 50)
                 
                 // Email and Password fields
@@ -34,13 +36,15 @@ struct LoginView: View {
                     Toggle(isOn: $rememberMe) {
                         Text("Remember Me")
                     }
-                    .toggleStyle(SwitchToggleStyle(tint: .blue))
+                    .toggleStyle(SwitchToggleStyle(tint: .purple))
                     
                     Spacer()
                     
                     Button("Forgot Password?") {
                         // Handle forgot password action
                     }
+                    .foregroundColor(.purple)
+
                 }
                 .padding(.horizontal, 20)
                 .padding(.top, 10)
@@ -51,7 +55,7 @@ struct LoginView: View {
                         .foregroundColor(.white)
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .padding()
-                        .background(Color.blue)
+                        .background(Color.purple)
                         .cornerRadius(5)
                 }
                 .padding(.horizontal, 20)
@@ -106,11 +110,16 @@ struct LoginView: View {
                 .padding(.top, 10)
                 
                 // Sign up link
-                Button("Don't have an account? Sign up") {
+                Button(action: {
                     // Handle sign up action
+                }) {
+                    Text("Don't have an account? ")
+                        .foregroundColor(.black) +
+                    Text("Sign up")
+                        .foregroundColor(.purple)
                 }
                 .padding(.top, 20)
-                
+
                 // Footer Image
                 Image("footer") // Ensure this image is in your assets
                     .resizable()

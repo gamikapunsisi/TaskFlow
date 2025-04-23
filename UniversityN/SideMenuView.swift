@@ -2,7 +2,7 @@ import SwiftUI
 
 struct SideMenuView: View {
     @Binding var isShowing: Bool
-    
+
     var body: some View {
         ZStack {
             // Dark overlay
@@ -22,8 +22,7 @@ struct SideMenuView: View {
                 VStack(alignment: .leading, spacing: 0) {
                     // Profile
                     VStack(alignment: .leading) {
-                        
-                        Image("profile")  // Make sure 'profile' is the correct name of your image asset
+                        Image("profile")
                             .resizable()
                             .scaledToFill()
                             .frame(width: 60, height: 60)
@@ -35,7 +34,6 @@ struct SideMenuView: View {
                             .font(.headline)
                             .foregroundColor(.black)
 
-                        
                         Text("View Profile")
                             .font(.caption)
                             .foregroundColor(.black.opacity(0.7))
@@ -61,14 +59,13 @@ struct SideMenuView: View {
                 .frame(width: 250)
                 .background(Color.white)
                 .offset(x: isShowing ? 0 : -250)
-                .animation(.default)
+                .animation(.default, value: isShowing) // ✅ FIXED: replaced deprecated .animation()
 
                 Spacer()
             }
         }
         .edgesIgnoringSafeArea(.all)
         .navigationBarHidden(true)
-
     }
 }
 
@@ -77,27 +74,19 @@ enum MenuOption: CaseIterable {
 
     var title: String {
         switch self {
-        case .myProfile:
-            return "My Profile"
-        case .bookmarks:
-            return "Bookmarks"
-        case .settings:
-            return "Settings"
-        case .signOut:
-            return "Sign Out"
+        case .myProfile: return "My Profile"
+        case .bookmarks: return "Bookmarks"
+        case .settings: return "Settings"
+        case .signOut: return "Sign Out"
         }
     }
 
     var imageName: String {
         switch self {
-        case .myProfile:
-            return "person"
-        case .bookmarks:
-            return "book"
-        case .settings:
-            return "gear"
-        case .signOut:
-            return "arrowshape.turn.up.left"
+        case .myProfile: return "person"
+        case .bookmarks: return "book"
+        case .settings: return "gear"
+        case .signOut: return "arrowshape.turn.up.left"
         }
     }
 }

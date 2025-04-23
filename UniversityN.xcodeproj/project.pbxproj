@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		171244642DB7548D0044E47A /* ContractsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171244632DB7548A0044E47A /* ContractsView.swift */; };
+		171244662DB765C50044E47A /* JobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171244652DB765BD0044E47A /* JobView.swift */; };
+		171244682DB768020044E47A /* JobDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171244672DB767FD0044E47A /* JobDetail.swift */; };
+		1712446A2DB76B950044E47A /* AlertsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171244692DB76B8F0044E47A /* AlertsView.swift */; };
+		171244702DB7E93D0044E47A /* ClientProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1712446F2DB7E93A0044E47A /* ClientProfileView.swift */; };
+		171244722DB8823D0044E47A /* ClientProposalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171244712DB8823A0044E47A /* ClientProposalsView.swift */; };
+		171244742DB882F10044E47A /* ClientContractsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171244732DB882EF0044E47A /* ClientContractsView.swift */; };
 		1743F6732D71C40000372929 /* ScreenNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1743F6722D71C3FE00372929 /* ScreenNames.swift */; };
 		1743F6752D71D7C300372929 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1743F6742D71D7BB00372929 /* Router.swift */; };
 		1743F6AE2D72187B00372929 /* MyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1743F6AD2D72185E00372929 /* MyApp.swift */; };
@@ -52,6 +59,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		171244632DB7548A0044E47A /* ContractsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractsView.swift; sourceTree = "<group>"; };
+		171244652DB765BD0044E47A /* JobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobView.swift; sourceTree = "<group>"; };
+		171244672DB767FD0044E47A /* JobDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetail.swift; sourceTree = "<group>"; };
+		171244692DB76B8F0044E47A /* AlertsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsView.swift; sourceTree = "<group>"; };
+		1712446F2DB7E93A0044E47A /* ClientProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientProfileView.swift; sourceTree = "<group>"; };
+		171244712DB8823A0044E47A /* ClientProposalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientProposalsView.swift; sourceTree = "<group>"; };
+		171244732DB882EF0044E47A /* ClientContractsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientContractsView.swift; sourceTree = "<group>"; };
 		1743F6422D71A32C00372929 /* Untitled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Untitled.swift; sourceTree = "<group>"; };
 		1743F6722D71C3FE00372929 /* ScreenNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenNames.swift; sourceTree = "<group>"; };
 		1743F6742D71D7BB00372929 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -135,6 +149,13 @@
 		520C4B242D6F31B6003B08E2 /* UniversityN */ = {
 			isa = PBXGroup;
 			children = (
+				171244732DB882EF0044E47A /* ClientContractsView.swift */,
+				171244712DB8823A0044E47A /* ClientProposalsView.swift */,
+				1712446F2DB7E93A0044E47A /* ClientProfileView.swift */,
+				171244692DB76B8F0044E47A /* AlertsView.swift */,
+				171244672DB767FD0044E47A /* JobDetail.swift */,
+				171244652DB765BD0044E47A /* JobView.swift */,
+				171244632DB7548A0044E47A /* ContractsView.swift */,
 				1743F6AD2D72185E00372929 /* MyApp.swift */,
 				1743F6762D720D9900372929 /* Navigation */,
 				1743F6742D71D7BB00372929 /* Router.swift */,
@@ -322,23 +343,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				52812BC72D70CE8600BDB866 /* FilterView.swift in Sources */,
+				1712446A2DB76B950044E47A /* AlertsView.swift in Sources */,
 				52812BBD2D708F4600BDB866 /* LabListView.swift in Sources */,
 				52812BC32D70BF0000BDB866 /* CampusMapView.swift in Sources */,
+				171244662DB765C50044E47A /* JobView.swift in Sources */,
 				520C4B5E2D6F5020003B08E2 /* Verification.swift in Sources */,
 				52812BDB2D7101EF00BDB866 /* LoadingView.swift in Sources */,
+				171244642DB7548D0044E47A /* ContractsView.swift in Sources */,
+				171244682DB768020044E47A /* JobDetail.swift in Sources */,
 				52812BBF2D70B7CE00BDB866 /* LocationDetailView.swift in Sources */,
 				1743F6752D71D7C300372929 /* Router.swift in Sources */,
 				520C4B702D6FA5E2003B08E2 /* EventsListView.swift in Sources */,
 				520C4B502D6F3386003B08E2 /* LoginView.swift in Sources */,
+				171244702DB7E93D0044E47A /* ClientProfileView.swift in Sources */,
 				520C4B5C2D6F46DC003B08E2 /* Signup.swift in Sources */,
 				52812BCD2D70DC6100BDB866 /* ProfileView.swift in Sources */,
 				520C4B6A2D6F58FB003B08E2 /* EventAppView.swift in Sources */,
 				520C4B622D6F51B6003B08E2 /* PhoneGuideView1.swift in Sources */,
+				171244742DB882F10044E47A /* ClientContractsView.swift in Sources */,
 				1743F6AE2D72187B00372929 /* MyApp.swift in Sources */,
 				1743F6732D71C40000372929 /* ScreenNames.swift in Sources */,
 				520C4B6C2D6FA05D003B08E2 /* EventDetailView.swift in Sources */,
 				520C4B602D6F50BE003B08E2 /* ResetPasswordView.swift in Sources */,
 				52812BC92D70D17800BDB866 /* SideMenuView.swift in Sources */,
+				171244722DB8823D0044E47A /* ClientProposalsView.swift in Sources */,
 				520C4B282D6F31B6003B08E2 /* ContentView.swift in Sources */,
 				520C4B262D6F31B6003B08E2 /* UniversityNApp.swift in Sources */,
 			);
@@ -510,7 +538,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -539,7 +567,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

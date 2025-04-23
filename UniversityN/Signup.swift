@@ -1,16 +1,22 @@
 import SwiftUI
+import Alamofire
 
 struct SignUpView: View {
     @State private var fullName: String = ""
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var confirmPassword: String = ""
+    @State private var selectedRole: String = "client" // default role
+    @State private var alertMessage = ""
+    @State private var showAlert = false
+
+    let roles = ["client", "tasker"]
 
     var body: some View {
         VStack {
             HStack {
                 Button(action: {
-                    // Action for back navigation
+                    // Back navigation action
                 }) {
                     Image(systemName: "chevron.left")
                         .foregroundColor(.blue)
@@ -37,11 +43,17 @@ struct SignUpView: View {
 
             SecureField("Confirm password", text: $confirmPassword)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding([.horizontal, .bottom])
+                .padding(.horizontal)
 
-            Button(action: {
-                // Action for sign up
-            }) {
+            Picker("Role", selection: $selectedRole) {
+                ForEach(roles, id: \.self) { role in
+                    Text(role.capitalized)
+                }
+            }
+            .pickerStyle(SegmentedPickerStyle())
+            .padding()
+
+            Button(action: registerUser) {
                 HStack {
                     Text("SIGN UP")
                     Image(systemName: "arrow.right")
@@ -57,12 +69,11 @@ struct SignUpView: View {
             Text("OR")
                 .padding()
 
-            // Google Sign In
             Button(action: {
-                // Action for Google sign in
+                // Google sign-in action
             }) {
                 HStack {
-                    Image("google") // Your Google icon
+                    Image("google")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 24, height: 24)
@@ -77,12 +88,11 @@ struct SignUpView: View {
             }
             .padding(.horizontal)
 
-            // Facebook Sign In
             Button(action: {
-                // Action for Facebook sign in
+                // Facebook sign-in action
             }) {
                 HStack {
-                    Image("facebook") // Your Facebook icon
+                    Image("facebook")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 24, height: 24)
@@ -97,22 +107,54 @@ struct SignUpView: View {
             }
             .padding(.horizontal)
 
-//            Spacer()
-
             Button("Already have an account? Sign in") {
-                // Action for switching to sign in
+                // Navigate to sign-in
             }
-            .navigationBarHidden(true)
             .padding(.bottom)
 
-//            Image("footer") // Ensure this image is in your assets
-//                .resizable()
-//                .scaledToFit()
-//                .frame(width: 400)
-//                .padding(.bottom, -55)
-                
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("Registration"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
         }
     }
+
+    func registerUser() {
+        let url = "http://127.0.0.1:8000/api/register" // Replace with your server's API URL
+
+        let parameters: Parameters = [
+            "full_name": fullName,
+            "email": email,
+            "password": password,
+            "password_confirmation": confirmPassword,
+            "role": selectedRole
+        ]
+        print("Sending Parameters: \(parameters)")
+
+        // Use responseDecodable instead of deprecated responseJSON
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+               .validate(statusCode: 200..<300)
+               .responseDecodable(of: SignupResponse.self) { response in
+                   switch response.result {
+                   case .success(let signupResponse):
+                       alertMessage = signupResponse.message
+                   case .failure(let error):
+                       if let data = response.data,
+                          let serverMessage = String(data: data, encoding: .utf8) {
+                           alertMessage = "Failed: \(serverMessage)"
+                       } else {
+                           alertMessage = "Failed: \(error.localizedDescription)"
+                       }
+                   }
+                   showAlert = true
+               }
+    }
+}
+
+// Model to decode the response from the server
+struct SignupResponse: Decodable {
+    let success: Bool
+    let message: String
+    // Add other fields as necessary
 }
 
 struct SignUpView_Previews: PreviewProvider {

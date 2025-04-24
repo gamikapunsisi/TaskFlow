@@ -11,9 +11,10 @@
 		171244662DB765C50044E47A /* JobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171244652DB765BD0044E47A /* JobView.swift */; };
 		171244682DB768020044E47A /* JobDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171244672DB767FD0044E47A /* JobDetail.swift */; };
 		1712446A2DB76B950044E47A /* AlertsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171244692DB76B8F0044E47A /* AlertsView.swift */; };
-		171244702DB7E93D0044E47A /* ClientProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1712446F2DB7E93A0044E47A /* ClientProfileView.swift */; };
 		171244722DB8823D0044E47A /* ClientProposalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171244712DB8823A0044E47A /* ClientProposalsView.swift */; };
 		171244742DB882F10044E47A /* ClientContractsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171244732DB882EF0044E47A /* ClientContractsView.swift */; };
+		1729934E2DBA4CED00E6CD72 /* ClientProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1729934D2DBA4CD900E6CD72 /* ClientProfileView.swift */; };
+		172993502DBA5BC000E6CD72 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1729934F2DBA5BB900E6CD72 /* ProfileView.swift */; };
 		1743F6732D71C40000372929 /* ScreenNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1743F6722D71C3FE00372929 /* ScreenNames.swift */; };
 		1743F6752D71D7C300372929 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1743F6742D71D7BB00372929 /* Router.swift */; };
 		1743F6AE2D72187B00372929 /* MyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1743F6AD2D72185E00372929 /* MyApp.swift */; };
@@ -38,7 +39,6 @@
 		52812BC32D70BF0000BDB866 /* CampusMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52812BC22D70BF0000BDB866 /* CampusMapView.swift */; };
 		52812BC72D70CE8600BDB866 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52812BC62D70CE8600BDB866 /* FilterView.swift */; };
 		52812BC92D70D17800BDB866 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52812BC82D70D17800BDB866 /* SideMenuView.swift */; };
-		52812BCD2D70DC6100BDB866 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52812BCC2D70DC6100BDB866 /* ProfileView.swift */; };
 		52812BDB2D7101EF00BDB866 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52812BDA2D7101EF00BDB866 /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,9 +64,10 @@
 		171244652DB765BD0044E47A /* JobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobView.swift; sourceTree = "<group>"; };
 		171244672DB767FD0044E47A /* JobDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetail.swift; sourceTree = "<group>"; };
 		171244692DB76B8F0044E47A /* AlertsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsView.swift; sourceTree = "<group>"; };
-		1712446F2DB7E93A0044E47A /* ClientProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientProfileView.swift; sourceTree = "<group>"; };
 		171244712DB8823A0044E47A /* ClientProposalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientProposalsView.swift; sourceTree = "<group>"; };
 		171244732DB882EF0044E47A /* ClientContractsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientContractsView.swift; sourceTree = "<group>"; };
+		1729934D2DBA4CD900E6CD72 /* ClientProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientProfileView.swift; sourceTree = "<group>"; };
+		1729934F2DBA5BB900E6CD72 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		1743F6422D71A32C00372929 /* Untitled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Untitled.swift; sourceTree = "<group>"; };
 		1743F6722D71C3FE00372929 /* ScreenNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenNames.swift; sourceTree = "<group>"; };
 		1743F6742D71D7BB00372929 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -94,7 +95,6 @@
 		52812BC22D70BF0000BDB866 /* CampusMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusMapView.swift; sourceTree = "<group>"; };
 		52812BC62D70CE8600BDB866 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		52812BC82D70D17800BDB866 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
-		52812BCC2D70DC6100BDB866 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		52812BDA2D7101EF00BDB866 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -151,9 +151,10 @@
 		520C4B242D6F31B6003B08E2 /* UniversityN */ = {
 			isa = PBXGroup;
 			children = (
+				1729934F2DBA5BB900E6CD72 /* ProfileView.swift */,
+				1729934D2DBA4CD900E6CD72 /* ClientProfileView.swift */,
 				171244732DB882EF0044E47A /* ClientContractsView.swift */,
 				171244712DB8823A0044E47A /* ClientProposalsView.swift */,
-				1712446F2DB7E93A0044E47A /* ClientProfileView.swift */,
 				171244692DB76B8F0044E47A /* AlertsView.swift */,
 				171244672DB767FD0044E47A /* JobDetail.swift */,
 				171244652DB765BD0044E47A /* JobView.swift */,
@@ -173,7 +174,6 @@
 				520C4B612D6F51B6003B08E2 /* PhoneGuideView1.swift */,
 				52812BC82D70D17800BDB866 /* SideMenuView.swift */,
 				520C4B692D6F58FB003B08E2 /* EventAppView.swift */,
-				52812BCC2D70DC6100BDB866 /* ProfileView.swift */,
 				520C4B6B2D6FA05D003B08E2 /* EventDetailView.swift */,
 				52812BBC2D708F4600BDB866 /* LabListView.swift */,
 				52812BBE2D70B7CE00BDB866 /* LocationDetailView.swift */,
@@ -358,12 +358,12 @@
 				171244682DB768020044E47A /* JobDetail.swift in Sources */,
 				52812BBF2D70B7CE00BDB866 /* LocationDetailView.swift in Sources */,
 				1743F6752D71D7C300372929 /* Router.swift in Sources */,
+				172993502DBA5BC000E6CD72 /* ProfileView.swift in Sources */,
 				520C4B702D6FA5E2003B08E2 /* EventsListView.swift in Sources */,
 				520C4B502D6F3386003B08E2 /* LoginView.swift in Sources */,
-				171244702DB7E93D0044E47A /* ClientProfileView.swift in Sources */,
 				520C4B5C2D6F46DC003B08E2 /* Signup.swift in Sources */,
-				52812BCD2D70DC6100BDB866 /* ProfileView.swift in Sources */,
 				520C4B6A2D6F58FB003B08E2 /* EventAppView.swift in Sources */,
+				1729934E2DBA4CED00E6CD72 /* ClientProfileView.swift in Sources */,
 				520C4B622D6F51B6003B08E2 /* PhoneGuideView1.swift in Sources */,
 				171244742DB882F10044E47A /* ClientContractsView.swift in Sources */,
 				1743F6AE2D72187B00372929 /* MyApp.swift in Sources */,
@@ -533,9 +533,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"UniversityN/Preview Content\"";
+				DEVELOPMENT_TEAM = TB42592928;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -551,6 +553,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = UN.UniversityN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -562,9 +565,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"UniversityN/Preview Content\"";
+				DEVELOPMENT_TEAM = TB42592928;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -580,6 +585,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = UN.UniversityN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

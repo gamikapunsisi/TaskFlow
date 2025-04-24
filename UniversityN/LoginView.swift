@@ -7,109 +7,92 @@ struct LoginView: View {
     @State private var rememberMe: Bool = false
     @State private var showAlert: Bool = false
     @State private var alertMessage: String = ""
+    @State private var isClientLoggedIn: Bool = false
+    @State private var isTaskerLoggedIn: Bool = false
 
     var body: some View {
         NavigationStack {
-            VStack {
-                Image("taskflowlogo")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 200, height: 150)
-                    .padding(.top, 50)
+            ScrollView {
+                VStack(spacing: 20) {
+                    Image("taskflowlogo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 200, height: 150)
+                        .padding(.top, 50)
 
-                TextField("Email", text: $email)
-                    .padding()
-                    .background(Color.secondary.opacity(0.3))
-                    .cornerRadius(5)
-                    .padding(.horizontal, 20)
-
-                SecureField("Password", text: $password)
-                    .padding()
-                    .background(Color.secondary.opacity(0.3))
-                    .cornerRadius(5)
-                    .padding(.horizontal, 20)
-
-                HStack {
-                    Toggle(isOn: $rememberMe) {
-                        Text("Remember Me")
+                    Group {
+                        TextField("Email", text: $email)
+                            .keyboardType(.emailAddress)
+                            .autocapitalization(.none)
+                        SecureField("Password", text: $password)
                     }
-                    .toggleStyle(SwitchToggleStyle(tint: .purple))
+                    .padding()
+                    .background(Color.secondary.opacity(0.2))
+                    .cornerRadius(8)
+                    .padding(.horizontal)
+
+                    HStack {
+                        Toggle("Remember Me", isOn: $rememberMe)
+                            .toggleStyle(SwitchToggleStyle(tint: .purple))
+
+                        Spacer()
+
+                        Button("Forgot Password?") {
+                            // Implement logic
+                        }
+                        .foregroundColor(.purple)
+                        .font(.footnote)
+                    }
+                    .padding(.horizontal)
+
+                    Button(action: {
+                        loginUser()
+                    }) {
+                        Text("SIGN IN")
+                            .bold()
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.purple)
+                            .cornerRadius(8)
+                    }
+                    .padding(.horizontal)
+
+                    Text("OR")
+                        .padding(.top)
+
+                    VStack(spacing: 10) {
+                        socialLoginButton(image: "google", text: "Login with Google")
+                        socialLoginButton(image: "facebook", text: "Login with Facebook")
+                    }
+                    .padding(.horizontal)
+
+                    NavigationLink("Don't have an account? Sign Up", destination: SignupView())
+                        .font(.footnote)
+                        .padding(.top, 10)
 
                     Spacer()
 
-                    Button("Forgot Password?") {
-                        // Forgot password action
-                    }
-                    .foregroundColor(.purple)
-                }
-                .padding(.horizontal, 20)
-                .padding(.top, 10)
-
-                Button(action: {
-                    loginUser()
-                }) {
-                    Text("SIGN IN")
-                        .foregroundColor(.white)
+                    Image("footer")
+                        .resizable()
+                        .scaledToFit()
                         .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.purple)
-                        .cornerRadius(5)
+                        .padding(.bottom, 10)
                 }
-                .padding(.horizontal, 20)
-                .padding(.top, 20)
-
-                Text("OR").padding(.top, 20)
-
-                Button(action: {
-                    // Google login logic
-                }) {
-                    HStack {
-                        Image("google")
-                            .resizable()
-                            .frame(width: 24, height: 24)
-                        Text("Login with Google")
-                            .foregroundColor(.black)
-                    }
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.white)
-                    .cornerRadius(5)
-                }
-                .padding(.horizontal, 20)
-
-                Button(action: {
-                    // Facebook login logic
-                }) {
-                    HStack {
-                        Image("facebook")
-                            .resizable()
-                            .frame(width: 25, height: 25)
-                        Text("Login with Facebook")
-                            .foregroundColor(.black)
-                    }
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.white)
-                    .cornerRadius(5)
-                }
-                .padding(.horizontal, 20)
-                .padding(.top, 10)
-
-                NavigationLink("Don't have an account? Sign Up", destination: SignupView())
-                    .padding(.top, 20)
-
-                Image("footer")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 400)
-                    .padding(.bottom, -55)
             }
             .alert(isPresented: $showAlert) {
                 Alert(title: Text("Message"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
             }
+            .navigationDestination(isPresented: $isClientLoggedIn) {
+                ClientProfileView() // ✅ Correctly routes to your existing profile view
+            }
+            .navigationDestination(isPresented: $isTaskerLoggedIn) {
+                ProfileView()
+            }
         }
     }
 
+    // MARK: - API Request
     func loginUser() {
         let url = "http://localhost:8000/api/login"
         let parameters: [String: String] = [
@@ -122,34 +105,58 @@ struct LoginView: View {
             .responseData { response in
                 switch response.result {
                 case .success(let data):
-                    if let jsonString = String(data: data, encoding: .utf8) {
-                        print("✅ Raw response:\n\(jsonString)")
-                    }
-
                     do {
                         let decoded = try JSONDecoder().decode(LoginResponse.self, from: data)
-                        alertMessage = decoded.message
-                        showAlert = true
-                        print("Token: \(decoded.access_token)")
-                        print("Logged in user: \(decoded.user.name)")
-                        // Store token or handle navigation here
-                        // Example: UserDefaults.standard.set(decoded.access_token, forKey: "userToken")
+                        UserDefaults.standard.set(decoded.access_token, forKey: "userToken")
 
+                        if let role = UserRole(rawValue: decoded.user.role) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                switch role {
+                                case .client:
+                                    isClientLoggedIn = true
+                                case .tasker:
+                                    isTaskerLoggedIn = true
+                                }
+                            }
+                        } else {
+                            alertMessage = "Unknown role: \(decoded.user.role)"
+                            showAlert = true
+                        }
                     } catch {
-                        print("❌ Decoding Error: \(error)")
-                        alertMessage = "Failed to decode response: \(error.localizedDescription)"
+                        alertMessage = "Decoding failed: \(error.localizedDescription)"
                         showAlert = true
                     }
 
                 case .failure(let error):
-                    alertMessage = "Network error: \(error.localizedDescription)"
+                    alertMessage = "Network Error: \(error.localizedDescription)"
                     showAlert = true
                 }
             }
     }
+
+    // MARK: - Social Login Button
+    func socialLoginButton(image: String, text: String) -> some View {
+        HStack {
+            Image(image)
+                .resizable()
+                .frame(width: 24, height: 24)
+            Text(text)
+                .foregroundColor(.black)
+        }
+        .padding()
+        .frame(maxWidth: .infinity)
+        .background(Color.white)
+        .cornerRadius(8)
+        .shadow(radius: 1)
+    }
 }
 
-// Updated model to match your API response
+// MARK: - Enums & Models
+enum UserRole: String {
+    case client
+    case tasker
+}
+
 struct LoginResponse: Decodable {
     let message: String
     let access_token: String
@@ -167,11 +174,13 @@ struct User: Decodable {
     let role: String
 }
 
+// MARK: - Placeholder Views
 struct SignupView: View {
     var body: some View {
         Text("Signup Screen")
     }
 }
+
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {

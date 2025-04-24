@@ -22,7 +22,7 @@ struct ClientProfileView: View {
                         }
 
                         VStack(alignment: .leading) {
-                            Text("Hansika S.")
+                            Text("Gamika Punsisi.")
                                 .font(.title2)
                                 .bold()
                             Text("📍 Minuwangoda, Sri Lanka")

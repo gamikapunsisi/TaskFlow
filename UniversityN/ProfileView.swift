@@ -1,3 +1,10 @@
+//
+//  ProfileView.swift
+//  UniversityN
+//
+//  Created by Gamika Punsisi on 2025-04-24.
+//
+
 import SwiftUI
 
 struct ProfileView: View {

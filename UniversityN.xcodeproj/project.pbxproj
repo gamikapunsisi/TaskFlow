@@ -30,7 +30,6 @@
 		520C4B432D6F31B8003B08E2 /* UniversityNUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520C4B422D6F31B8003B08E2 /* UniversityNUITestsLaunchTests.swift */; };
 		520C4B502D6F3386003B08E2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520C4B4F2D6F3386003B08E2 /* LoginView.swift */; };
 		520C4B5C2D6F46DC003B08E2 /* Signup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520C4B5B2D6F46DC003B08E2 /* Signup.swift */; };
-		520C4B5E2D6F5020003B08E2 /* Verification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520C4B5D2D6F5020003B08E2 /* Verification.swift */; };
 		520C4B602D6F50BE003B08E2 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520C4B5F2D6F50BE003B08E2 /* ResetPasswordView.swift */; };
 		520C4B622D6F51B6003B08E2 /* PhoneGuideView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520C4B612D6F51B6003B08E2 /* PhoneGuideView1.swift */; };
 		520C4B6A2D6F58FB003B08E2 /* EventAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520C4B692D6F58FB003B08E2 /* EventAppView.swift */; };
@@ -88,7 +87,6 @@
 		520C4B422D6F31B8003B08E2 /* UniversityNUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversityNUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		520C4B4F2D6F3386003B08E2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		520C4B5B2D6F46DC003B08E2 /* Signup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signup.swift; sourceTree = "<group>"; };
-		520C4B5D2D6F5020003B08E2 /* Verification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Verification.swift; sourceTree = "<group>"; };
 		520C4B5F2D6F50BE003B08E2 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		520C4B612D6F51B6003B08E2 /* PhoneGuideView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneGuideView1.swift; sourceTree = "<group>"; };
 		520C4B692D6F58FB003B08E2 /* EventAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAppView.swift; sourceTree = "<group>"; };
@@ -175,7 +173,6 @@
 				520C4B4F2D6F3386003B08E2 /* LoginView.swift */,
 				52812BDA2D7101EF00BDB866 /* LoadingView.swift */,
 				520C4B5B2D6F46DC003B08E2 /* Signup.swift */,
-				520C4B5D2D6F5020003B08E2 /* Verification.swift */,
 				520C4B5F2D6F50BE003B08E2 /* ResetPasswordView.swift */,
 				520C4B612D6F51B6003B08E2 /* PhoneGuideView1.swift */,
 				52812BC82D70D17800BDB866 /* SideMenuView.swift */,
@@ -359,7 +356,6 @@
 				52812BBD2D708F4600BDB866 /* LabListView.swift in Sources */,
 				52812BC32D70BF0000BDB866 /* CampusMapView.swift in Sources */,
 				171244662DB765C50044E47A /* JobView.swift in Sources */,
-				520C4B5E2D6F5020003B08E2 /* Verification.swift in Sources */,
 				52812BDB2D7101EF00BDB866 /* LoadingView.swift in Sources */,
 				171244642DB7548D0044E47A /* ContractsView.swift in Sources */,
 				171244682DB768020044E47A /* JobDetail.swift in Sources */,

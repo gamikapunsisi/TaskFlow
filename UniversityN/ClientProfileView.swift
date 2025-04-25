@@ -1,5 +1,81 @@
 import SwiftUI
 
+struct MainTabView: View {
+    @State private var selectedTab = 0
+
+    var body: some View {
+        ZStack {
+            TabView(selection: $selectedTab) {
+                ClientProfileView()
+                    .tabItem {
+                        Image(systemName: "square.grid.2x2")
+                        Text("Home")
+                    }
+                    .tag(0)
+
+                Text("Documents")
+                    .tabItem {
+                        Image(systemName: "doc.text")
+                        Text("Docs")
+                    }
+                    .tag(1)
+
+                Text("Create New")
+                    .tabItem {
+                        Image(systemName: "plus.circle")
+                        Text("New")
+                    }
+                    .tag(2)
+
+                Text("Notifications")
+                    .tabItem {
+                        Image(systemName: "bell")
+                        Text("Alerts")
+                    }
+                    .badge(2)
+                    .tag(3)
+
+                Text("Messages")
+                    .tabItem {
+                        Image(systemName: "message")
+                        Text("Chat")
+                    }
+                    .badge(1)
+                    .tag(4)
+            }
+            .accentColor(.purple)
+
+            // Floating action button in center
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        withAnimation {
+                            selectedTab = 2
+                        }
+                    }) {
+                        ZStack {
+                            Circle()
+                                .fill(Color.purple)
+                                .frame(width: 60, height: 60)
+                                .shadow(radius: 4)
+                            Image(systemName: "plus")
+                                .foregroundColor(.white)
+                                .font(.system(size: 28, weight: .bold))
+                        }
+                    }
+                    .padding(.bottom, 20)
+                    .offset(y: -10)
+                    Spacer()
+                }
+            }
+        }
+    }
+}
+
+// MARK: - Client Profile View
+
 struct ClientProfileView: View {
     @State private var testimonialPage = 1
 
@@ -7,7 +83,6 @@ struct ClientProfileView: View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
-
                     // Profile Info
                     HStack(alignment: .center, spacing: 16) {
                         ZStack(alignment: .bottomTrailing) {
@@ -70,13 +145,16 @@ struct ClientProfileView: View {
 
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 16) {
-                            JobCard(title: "Educational Mobile app UI/UX Design",
-                                    date: "Feb 12, 2025",
-                                    proposals: "5 to 10")
-
-                            JobCard(title: "House Painting Job around Minuwangoda",
-                                    date: "Feb 12, 2025",
-                                    proposals: "5 to 10")
+                            JobCard(
+                                title: "Educational Mobile app UI/UX Design",
+                                date: "Feb 12, 2025",
+                                proposals: "5 to 10"
+                            )
+                            JobCard(
+                                title: "House Painting Job around Minuwangoda",
+                                date: "Feb 12, 2025",
+                                proposals: "5 to 10"
+                            )
                         }
                         .padding(.vertical)
                     }
@@ -86,7 +164,8 @@ struct ClientProfileView: View {
                         Text("1/1")
                             .foregroundColor(.gray)
                         Spacer()
-                        Button("Next") {}.foregroundColor(.purple)
+                        Button("Next") {}
+                            .foregroundColor(.purple)
                     }
 
                     Divider()
@@ -122,7 +201,8 @@ struct ClientProfileView: View {
                 }
                 .padding()
             }
-            .navigationBarTitle("My Profile", displayMode: .inline)
+            .navigationTitle("My Profile")
+            .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(leading: Button(action: {}) {
                 Image(systemName: "chevron.left")
                     .foregroundColor(.black)
@@ -132,6 +212,7 @@ struct ClientProfileView: View {
 }
 
 // MARK: - Job Card
+
 struct JobCard: View {
     var title: String
     var date: String
@@ -160,6 +241,7 @@ struct JobCard: View {
 }
 
 // MARK: - Testimonial Card
+
 struct TestimonialCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
@@ -190,5 +272,5 @@ struct TestimonialCard: View {
 }
 
 #Preview {
-    ClientProfileView()
+    MainTabView()
 }

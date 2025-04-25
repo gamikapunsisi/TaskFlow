@@ -7,25 +7,28 @@
 
 import SwiftUI
 
-struct Job: Identifiable {
-    let id = UUID()
-    let title: String
-    let budget: String
-    let description: String
-    let tags: [String]
-    let location: String
-    let proposals: String
-}
+//struct Job: Identifiable {
+//    let id = UUID()
+//    let title: String
+//    let budget: String
+//    let description: String
+//    let tags: [String]
+//    let location: String
+//    let proposals: String
+//}
+
+
 
 struct JobView: View {
-    let job = Job(
-        title: "Tourism Mobile app UI/UX Design",
-        budget: "$250",
-        description: "We are seeking a talented UI/UX designer to create visually appealing and user-friendly design for our web application.",
-        tags: ["Figma", "Web Design", "User Interface Design", "UI/UX"],
-        location: "United States",
-        proposals: "5 to 10"
-    )
+    @StateObject var viewModel = TaskViewModel()
+    @State private var currentPage = 0
+    private let itemsPerPage = 2
+
+    var paginatedTasks: [Task] {
+        let startIndex = currentPage * itemsPerPage
+        let endIndex = min(startIndex + itemsPerPage, viewModel.tasks.count)
+        return Array(viewModel.tasks[startIndex..<endIndex])
+    }
 
     var body: some View {
         NavigationView {
@@ -47,32 +50,43 @@ struct JobView: View {
                     .foregroundColor(.gray)
                     .padding([.horizontal, .top])
 
-                // Job List
+                // Job List (Paginated)
                 ScrollView {
                     VStack(spacing: 16) {
-                        ForEach(0..<3) { _ in
-                            JobCardView(job: job)
+                        ForEach(paginatedTasks) { task in
+                            TaskCardView(task: task)
+                                .frame(height: 280) // control height for perfect 2-card fit
                         }
                     }
                     .padding()
                 }
 
-                // Pagination
+                // Pagination Controls
                 HStack {
-                    Button("Back") {}
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color(.systemGray5))
-                        .cornerRadius(10)
+                    Button("Back") {
+                        if currentPage > 0 {
+                            currentPage -= 1
+                        }
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(currentPage == 0 ? Color(.systemGray4) : Color(.systemGray5))
+                    .cornerRadius(10)
+                    .disabled(currentPage == 0)
 
-                    Text("1/50")
+                    Text("\(currentPage + 1)/\(max(1, Int(ceil(Double(viewModel.tasks.count) / Double(itemsPerPage)))))")
                         .foregroundColor(.gray)
 
-                    Button("Next") {}
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color(.systemGray5))
-                        .cornerRadius(10)
+                    Button("Next") {
+                        if (currentPage + 1) * itemsPerPage < viewModel.tasks.count {
+                            currentPage += 1
+                        }
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background((currentPage + 1) * itemsPerPage >= viewModel.tasks.count ? Color(.systemGray4) : Color(.systemGray5))
+                    .cornerRadius(10)
+                    .disabled((currentPage + 1) * itemsPerPage >= viewModel.tasks.count)
                 }
                 .padding()
 
@@ -105,50 +119,51 @@ struct JobView: View {
                 },
                 trailing: Image(systemName: "person.crop.circle")
             )
+            .onAppear {
+                viewModel.fetchTasks()
+            }
         }
     }
 }
 
-struct JobCardView: View {
-    let job: Job
+
+// 👉 Corrected TaskCardView to accept `Task`, not `Job`
+struct TaskCardView: View {
+    let task: Task
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Posted 2 seconds ago")
+            Text(task.createdAt ?? "Just now")
                 .font(.caption)
                 .foregroundColor(.gray)
 
-            Text(job.title)
+            Text(task.title)
                 .font(.headline)
                 .foregroundColor(.purple)
 
-            Text("Fixed Price - Est Budget: \(job.budget)")
+            Text("Fixed Price - Est Budget: $\(task.budget ?? "0")")
                 .font(.subheadline)
                 .foregroundColor(.black)
 
-            Text(job.description)
+            Text(task.description)
                 .font(.caption)
                 .foregroundColor(.gray)
 
-            // Tags
-            HStack {
-                ForEach(job.tags, id: \.self) { tag in
-                    Text(tag)
-                        .font(.caption)
-                        .padding(6)
-                        .background(Color(.systemGray6))
-                        .cornerRadius(10)
-                }
-            }
+            // Category Tag
+            Text(task.category)
+                .font(.caption)
+                .padding(6)
+                .background(Color(.systemGray6))
+                .cornerRadius(10)
 
             HStack {
-                Image(systemName: "mappin.and.ellipse")
-                Text(job.location)
+                Image(systemName: "calendar")
+                Text("Deadline: \(task.deadline)")
             }
             .font(.caption)
             .foregroundColor(.gray)
 
-            Text("Proposal: \(job.proposals)")
+            Text("Proposals: \(task.proposalsCount ?? 0)")
                 .font(.caption)
 
             Button(action: {}) {

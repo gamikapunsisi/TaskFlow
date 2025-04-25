@@ -20,6 +20,7 @@
 		1743F6752D71D7C300372929 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1743F6742D71D7BB00372929 /* Router.swift */; };
 		1743F6AE2D72187B00372929 /* MyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1743F6AD2D72185E00372929 /* MyApp.swift */; };
 		17C489B32DB941F70020C5FF /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 17C489B22DB941F70020C5FF /* Alamofire */; };
+		17DC86AA2DBB63E2002DBB00 /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DC86A92DBB63DE002DBB00 /* TaskViewModel.swift */; };
 		520C4B262D6F31B6003B08E2 /* UniversityNApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520C4B252D6F31B6003B08E2 /* UniversityNApp.swift */; };
 		520C4B282D6F31B6003B08E2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520C4B272D6F31B6003B08E2 /* ContentView.swift */; };
 		520C4B2A2D6F31B7003B08E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 520C4B292D6F31B7003B08E2 /* Assets.xcassets */; };
@@ -74,6 +75,7 @@
 		1743F6722D71C3FE00372929 /* ScreenNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenNames.swift; sourceTree = "<group>"; };
 		1743F6742D71D7BB00372929 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		1743F6AD2D72185E00372929 /* MyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyApp.swift; sourceTree = "<group>"; };
+		17DC86A92DBB63DE002DBB00 /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
 		520C4B222D6F31B6003B08E2 /* UniversityN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UniversityN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		520C4B252D6F31B6003B08E2 /* UniversityNApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversityNApp.swift; sourceTree = "<group>"; };
 		520C4B272D6F31B6003B08E2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 		520C4B242D6F31B6003B08E2 /* UniversityN */ = {
 			isa = PBXGroup;
 			children = (
+				17DC86A92DBB63DE002DBB00 /* TaskViewModel.swift */,
 				172993532DBA8C4F00E6CD72 /* CreateTaskView.swift */,
 				1729934F2DBA5BB900E6CD72 /* ProfileView.swift */,
 				1729934D2DBA4CD900E6CD72 /* ClientProfileView.swift */,
@@ -363,6 +366,7 @@
 				52812BBF2D70B7CE00BDB866 /* LocationDetailView.swift in Sources */,
 				1743F6752D71D7C300372929 /* Router.swift in Sources */,
 				172993502DBA5BC000E6CD72 /* ProfileView.swift in Sources */,
+				17DC86AA2DBB63E2002DBB00 /* TaskViewModel.swift in Sources */,
 				520C4B702D6FA5E2003B08E2 /* EventsListView.swift in Sources */,
 				520C4B502D6F3386003B08E2 /* LoginView.swift in Sources */,
 				520C4B5C2D6F46DC003B08E2 /* Signup.swift in Sources */,

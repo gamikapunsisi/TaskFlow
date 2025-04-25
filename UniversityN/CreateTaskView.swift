@@ -20,6 +20,8 @@ struct CreateTaskView: View {
     @State private var showError = false
     @State private var errorMessage = ""
     @State private var navigateToProfile = false
+    @StateObject var taskVM = TaskViewModel()
+
 
 
     var body: some View {
@@ -85,9 +87,13 @@ struct CreateTaskView: View {
                         }
                     }
                     .disabled(isSubmitting)
-                    NavigationLink(destination: ClientProfileView(), isActive: $navigateToProfile) {
-                                      EmptyView()
-                                  }
+//                    NavigationLink(destination: ClientProfileView(), isActive: $navigateToProfile) {
+//                                      EmptyView()
+//                                  }
+                    NavigationLink(destination: ClientProfileView(taskVM: taskVM), isActive: $navigateToProfile) {
+                        EmptyView()
+                    }
+
                 }
                 .padding()
             }

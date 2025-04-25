@@ -1,17 +1,21 @@
 import SwiftUI
 
+
+
 struct MainTabView: View {
     @State private var selectedTab = 0
+    @StateObject private var taskVM = TaskViewModel()
+
 
     var body: some View {
         ZStack {
             TabView(selection: $selectedTab) {
-                ClientProfileView()
-                    .tabItem {
-                        Image(systemName: "square.grid.2x2")
-                        Text("Home")
-                    }
-                    .tag(0)
+                ClientProfileView(taskVM: taskVM) // ← pass it here
+                                   .tabItem {
+                                       Image(systemName: "square.grid.2x2")
+                                       Text("Home")
+                                   }
+                                   .tag(0)
 
                 Text("Documents")
                     .tabItem {
@@ -71,12 +75,17 @@ struct MainTabView: View {
                 }
             }
         }
+        .onAppear {
+                   taskVM.fetchTasks() // Fetch tasks when the view appears
+               }
     }
 }
 
 // MARK: - Client Profile View
 
 struct ClientProfileView: View {
+    @ObservedObject var taskVM: TaskViewModel // ← added this
+
     @State private var testimonialPage = 1
 
     var body: some View {
@@ -119,7 +128,7 @@ struct ClientProfileView: View {
                     // Spend and Jobs
                     HStack {
                         VStack(alignment: .leading) {
-                            Text("$10k")
+                            Text("Rs:5600")
                                 .font(.title2)
                                 .bold()
                             Text("Total spend")
@@ -128,7 +137,7 @@ struct ClientProfileView: View {
                         }
                         Spacer()
                         VStack(alignment: .leading) {
-                            Text("50")
+                            Text("10")
                                 .font(.title2)
                                 .bold()
                             Text("Total jobs")
@@ -138,37 +147,81 @@ struct ClientProfileView: View {
                     }
 
                     Divider()
-
-                    // Active Job Post
+                    
+                    // MARK: - Active Job Post
+                    // MARK: - Active Job Post
                     Text("Active Job Post")
                         .font(.headline)
 
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 16) {
-                            JobCard(
-                                title: "Educational Mobile app UI/UX Design",
-                                date: "Feb 12, 2025",
-                                proposals: "5 to 10"
-                            )
-                            JobCard(
-                                title: "House Painting Job around Minuwangoda",
-                                date: "Feb 12, 2025",
-                                proposals: "5 to 10"
-                            )
+                            // Dynamically load JobCards from API
+//                            ForEach(taskVM.tasks) { task in
+//                                JobCard(
+//                                    title: task.title,
+//                                    date: task.deadline,
+//                                    proposals: task.proposalsCount
+//                                )
+//                            }
+                            // In the ClientProfileView.swift
+                            ForEach(taskVM.tasks) { task in
+                                JobCard(
+                                    title: task.title,
+                                    date: task.deadline,
+                                    category: task.category
+
+                                )
+
+                            }
+
+
+
+
                         }
                         .padding(.vertical)
                     }
 
+                    // Job Count Indicator
+//                    HStack {
+//                        Spacer()
+//                        Text("1/\(taskVM.tasks.count)")
+//                            .foregroundColor(.gray)
+//                        Spacer()
+//                        Button("Next") {}
+//                            .foregroundColor(.purple)
+//                    }
+//
+//                    Divider()
+                    
+                    // Job Count Indicator and Navigation
                     HStack {
-                        Spacer()
-                        Text("1/1")
+                        Text("1/\(taskVM.tasks.count)") // You can later bind current index
                             .foregroundColor(.gray)
-                        Spacer()
-                        Button("Next") {}
-                            .foregroundColor(.purple)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+
+                        Button("Next") {
+                            // Add next logic here
+                        }
+                        .foregroundColor(.purple)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
                     }
+                    .padding(.horizontal)
 
                     Divider()
+
+
+                
+
+//                    HStack {
+//                        Spacer()
+//                        Text("1/1")
+//                            .foregroundColor(.gray)
+//                        Spacer()
+//                        Button("Next") {}
+//                            .foregroundColor(.purple)
+//                    }
+//
+//                    Divider()
 
                     // Testimonials
                     Text("Testimonials")
@@ -216,21 +269,24 @@ struct ClientProfileView: View {
 struct JobCard: View {
     var title: String
     var date: String
-    var proposals: String
+    var category: String
+
 
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             Text(title)
                 .font(.headline)
                 .foregroundColor(.purple)
+            
+            Text("Category: \(category)")
+                           .font(.subheadline)
+                           .foregroundColor(.blue)
+            
             Text(date)
                 .font(.caption)
                 .foregroundColor(.gray)
-            Text("Fixed Price: $55.00")
-                .font(.caption)
-            Text("Proposal: \(proposals)")
-                .font(.caption)
-                .bold()
+//            Text("Fixed Price: $55.00")
+//                .font(.caption)
         }
         .padding()
         .frame(width: 250)

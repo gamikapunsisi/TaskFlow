@@ -9,6 +9,8 @@ struct LoginView: View {
     @State private var alertMessage: String = ""
     @State private var isClientLoggedIn: Bool = false
     @State private var isTaskerLoggedIn: Bool = false
+    @StateObject var taskVM = TaskViewModel()
+
 
     var body: some View {
         NavigationStack {
@@ -83,9 +85,14 @@ struct LoginView: View {
             .alert(isPresented: $showAlert) {
                 Alert(title: Text("Message"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
             }
+//            .navigationDestination(isPresented: $isClientLoggedIn) {
+//                ClientProfileView() // ✅ Correctly routes to your existing profile view
+//            }
+            
             .navigationDestination(isPresented: $isClientLoggedIn) {
-                ClientProfileView() // ✅ Correctly routes to your existing profile view
+                ClientProfileView(taskVM: taskVM)
             }
+
             .navigationDestination(isPresented: $isTaskerLoggedIn) {
                 ProfileView()
             }
@@ -95,6 +102,8 @@ struct LoginView: View {
     // MARK: - API Request
     func loginUser() {
         let url = "http://localhost:8000/api/login"
+//        let url = URL(string: "http://192.168.1.82:8000/api/login")!
+
         let parameters: [String: String] = [
             "email": email,
             "password": password

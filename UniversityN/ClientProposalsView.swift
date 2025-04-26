@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ClientProposalsView: View {
+    let taskId: Int
     var proposals = Proposal.mockData
 
     var body: some View {
@@ -167,5 +168,5 @@ struct Proposal: Identifiable {
 }
 
 #Preview {
-    ClientProposalsView()
+    ClientProposalsView(taskId: 1)
 }

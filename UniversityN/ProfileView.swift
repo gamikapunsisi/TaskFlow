@@ -84,7 +84,7 @@ struct ProfileView: View {
                                 .offset(x: 5, y: 5)
                         }
                         
-                        Text("Gamika P.")
+                        Text("Gamika Punsisi.")
                             .font(.headline)
                         HStack(spacing: 4) {
                             Image(systemName: "location.fill")
@@ -102,7 +102,7 @@ struct ProfileView: View {
                     // Earnings and Jobs
                     HStack {
                         VStack {
-                            Text("$259")
+                            Text("Rs:259000")
                                 .font(.title2)
                                 .fontWeight(.bold)
                             Text("Total earnings")
@@ -110,7 +110,7 @@ struct ProfileView: View {
                         }
                         Spacer()
                         VStack {
-                            Text("3")
+                            Text("40")
                                 .font(.title2)
                                 .fontWeight(.bold)
                             Text("Total jobs")

@@ -1,24 +1,52 @@
-//
-//  Untitled 2.swift
-//  UniversityN
-//
-//  Created by Gamika Punsisi on 2025-04-22.
-//
-
 import SwiftUI
+import EventKit
 
-//struct Job: Identifiable {
-//    let id = UUID()
-//    let title: String
-//    let budget: String
-//    let description: String
-//    let tags: [String]
-//    let location: String
-//    let proposals: String
-//}
+// MARK: - Calendar Manager
+class EventKitManager: ObservableObject {
+    let eventStore = EKEventStore()
 
+    func requestAccess(completion: @escaping (Bool) -> Void) {
+        eventStore.requestAccess(to: .event) { granted, _ in
+            DispatchQueue.main.async {
+                completion(granted)
+            }
+        }
+    }
 
+    func addEvent(title: String, dateString: String, completion: @escaping (Bool) -> Void) {
+        requestAccess { granted in
+            if granted {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd" // Match your task.deadline format
+                guard let date = formatter.date(from: dateString) else {
+                    print("❌ Invalid date format")
+                    completion(false)
+                    return
+                }
 
+                let event = EKEvent(eventStore: self.eventStore)
+                event.title = title
+                event.startDate = date
+                event.endDate = date.addingTimeInterval(3600)
+                event.calendar = self.eventStore.defaultCalendarForNewEvents
+
+                do {
+                    try self.eventStore.save(event, span: .thisEvent)
+                    print("✅ Event added to calendar")
+                    completion(true)
+                } catch {
+                    print("❌ Error saving event: \(error)")
+                    completion(false)
+                }
+            } else {
+                print("❌ Calendar access denied")
+                completion(false)
+            }
+        }
+    }
+}
+
+// MARK: - Job View
 struct JobView: View {
     @StateObject var viewModel = TaskViewModel()
     @State private var currentPage = 0
@@ -33,7 +61,7 @@ struct JobView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                // Search
+                // Search Bar
                 HStack {
                     Image(systemName: "magnifyingglass")
                         .foregroundColor(.gray)
@@ -45,23 +73,23 @@ struct JobView: View {
                 .cornerRadius(12)
                 .padding(.horizontal)
 
-                Text("Browse jobs that match your experience to a client’s hiring preference.\nOrdered by most recent.")
+                Text("Browse jobs that match your experience.\nOrdered by most recent.")
                     .font(.footnote)
                     .foregroundColor(.gray)
                     .padding([.horizontal, .top])
 
-                // Job List (Paginated)
+                // Job List
                 ScrollView {
                     VStack(spacing: 16) {
                         ForEach(paginatedTasks) { task in
                             TaskCardView(task: task)
-                                .frame(height: 280) // control height for perfect 2-card fit
+                                .frame(height: 300)
                         }
                     }
                     .padding()
                 }
 
-                // Pagination Controls
+                // Pagination
                 HStack {
                     Button("Back") {
                         if currentPage > 0 {
@@ -90,7 +118,7 @@ struct JobView: View {
                 }
                 .padding()
 
-                // Bottom Bar
+                // Bottom Tab Bar
                 HStack {
                     Image(systemName: "square.grid.2x2")
                     Spacer()
@@ -126,10 +154,13 @@ struct JobView: View {
     }
 }
 
-
-// 👉 Corrected TaskCardView to accept `Task`, not `Job`
+// MARK: - Task Card View
 struct TaskCardView: View {
     let task: Task
+    @ObservedObject var calendarManager = EventKitManager()
+    @State private var showAlert = false
+    @State private var navigateToDetail = false
+
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -166,7 +197,26 @@ struct TaskCardView: View {
             Text("Proposals: \(task.proposalsCount ?? 0)")
                 .font(.caption)
 
-            Button(action: {}) {
+            Button(action: {
+                calendarManager.addEvent(title: task.title, dateString: task.deadline) { success in
+                    showAlert = success
+                }
+            }) {
+                HStack {
+                    Image(systemName: "calendar.badge.plus")
+                    Text("Add to Calendar")
+                }
+                .font(.caption)
+                .foregroundColor(.blue)
+            }
+
+            NavigationLink(destination: JobDetailView(), isActive: $navigateToDetail) {
+                EmptyView()
+            }
+
+            Button(action: {
+                navigateToDetail = true
+            }) {
                 Text("Apply Now")
                     .frame(maxWidth: .infinity)
                     .padding()
@@ -174,11 +224,15 @@ struct TaskCardView: View {
                     .foregroundColor(.white)
                     .cornerRadius(10)
             }
+
         }
         .padding()
         .background(Color.white)
         .cornerRadius(20)
         .shadow(radius: 3)
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("Success"), message: Text("Event added to Calendar!"), dismissButton: .default(Text("OK")))
+        }
     }
 }
 

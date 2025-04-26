@@ -69,7 +69,7 @@ struct LoginView: View {
                     }
                     .padding(.horizontal)
 
-                    NavigationLink("Don't have an account? Sign Up", destination: SignupView())
+                    NavigationLink("Don't have an account? Sign Up", destination: SignUpView())
                         .font(.footnote)
                         .padding(.top, 10)
 
@@ -102,7 +102,6 @@ struct LoginView: View {
     // MARK: - API Request
     func loginUser() {
         let url = "http://localhost:8000/api/login"
-//        let url = URL(string: "http://192.168.1.82:8000/api/login")!
 
         let parameters: [String: String] = [
             "email": email,

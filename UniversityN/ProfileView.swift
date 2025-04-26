@@ -71,7 +71,7 @@ struct ProfileView: View {
                     // Profile Image and Info
                     VStack(spacing: 8) {
                         ZStack(alignment: .bottomTrailing) {
-                            Image("profile_picture") // Replace with your image
+                            Image("profile1") // Replace with your image
                                 .resizable()
                                 .frame(width: 80, height: 80)
                                 .clipShape(Circle())
@@ -124,7 +124,8 @@ struct ProfileView: View {
                     // Title and About
                     VStack(alignment: .leading, spacing: 8) {
                         HStack {
-                            Text("UI/UX Designer | User Interface Designer | Figma | Illustrator")
+                            Text("Automotive Engineer | Car Specialist")
+
                                 .font(.headline)
                                 .lineLimit(3)
                             Spacer()
@@ -132,17 +133,21 @@ struct ProfileView: View {
                                 .foregroundColor(.purple)
                         }
                         
-                        HStack {
-                            Text("Hello There...")
-                                .font(.subheadline)
-                            Spacer()
-                            Image(systemName: "pencil.circle")
-                                .foregroundColor(.purple)
-                        }
+//                        HStack {
+//                            Text("")
+//                                .font(.subheadline)
+//                            Spacer()
+//                            Image(systemName: "pencil.circle")
+//                                .foregroundColor(.purple)
+//                        }
                         
                         Text("""
-                        I’m Gamika Punsisi, a qualified professional UI/UX designer with 6+ years of experience. I’m passionate about user research, design principles, and staying up-to-date with the latest trends and technologies in design.
+                        Hi, I’m Gamika Punsisi – a qualified automotive engineer with over 6 years of hands-on experience.
+
+                        I specialize in car detailing, maintenance, and providing top-quality automotive services to keep your vehicle in its best condition.
+
                         """)
+
                         .font(.subheadline)
                         .foregroundColor(.gray)
                     }

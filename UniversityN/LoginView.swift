@@ -1,147 +1,185 @@
 import SwiftUI
-import Alamofire
+import LocalAuthentication
+import Foundation
 
-struct LoginView: View {
-    @State private var email: String = ""
-    @State private var password: String = ""
-    @State private var rememberMe: Bool = false
-    @State private var showAlert: Bool = false
-    @State private var alertMessage: String = ""
-    @State private var isClientLoggedIn: Bool = false
-    @State private var isTaskerLoggedIn: Bool = false
-    @StateObject var taskVM = TaskViewModel()
+// MARK: - CustomTextField (to disable AutoFill)
+struct CustomTextField: UIViewRepresentable {
+    class Coordinator: NSObject, UITextFieldDelegate {
+        var parent: CustomTextField
 
+        init(_ parent: CustomTextField) {
+            self.parent = parent
+        }
 
-    var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(spacing: 20) {
-                    Image("taskflowlogo")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 200, height: 150)
-                        .padding(.top, 50)
-
-                    Group {
-                        TextField("Email", text: $email)
-                            .keyboardType(.emailAddress)
-                            .autocapitalization(.none)
-                        SecureField("Password", text: $password)
-                    }
-                    .padding()
-                    .background(Color.secondary.opacity(0.2))
-                    .cornerRadius(8)
-                    .padding(.horizontal)
-
-                    HStack {
-                        Toggle("Remember Me", isOn: $rememberMe)
-                            .toggleStyle(SwitchToggleStyle(tint: .purple))
-
-                        Spacer()
-
-                        Button("Forgot Password?") {
-                            // Implement logic
-                        }
-                        .foregroundColor(.purple)
-                        .font(.footnote)
-                    }
-                    .padding(.horizontal)
-
-                    Button(action: {
-                        loginUser()
-                    }) {
-                        Text("SIGN IN")
-                            .bold()
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.purple)
-                            .cornerRadius(8)
-                    }
-                    .padding(.horizontal)
-
-                    Text("OR")
-                        .padding(.top)
-
-                    VStack(spacing: 10) {
-                        socialLoginButton(image: "google", text: "Login with Google")
-                        socialLoginButton(image: "facebook", text: "Login with Facebook")
-                    }
-                    .padding(.horizontal)
-
-                    NavigationLink("Don't have an account? Sign Up", destination: SignUpView())
-                        .font(.footnote)
-                        .padding(.top, 10)
-
-                    Spacer()
-
-                    Image("footer")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: .infinity)
-                        .padding(.bottom, 10)
-                }
-            }
-            .alert(isPresented: $showAlert) {
-                Alert(title: Text("Message"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
-            }
-//            .navigationDestination(isPresented: $isClientLoggedIn) {
-//                ClientProfileView() // ✅ Correctly routes to your existing profile view
-//            }
-            
-            .navigationDestination(isPresented: $isClientLoggedIn) {
-                ClientProfileView(taskVM: taskVM)
-            }
-
-            .navigationDestination(isPresented: $isTaskerLoggedIn) {
-                ProfileView()
-            }
+        func textFieldDidChangeSelection(_ textField: UITextField) {
+            parent.text = textField.text ?? ""
         }
     }
 
-    // MARK: - API Request
-    func loginUser() {
-        let url = "http://localhost:8000/api/login"
+    @Binding var text: String
+    var placeholder: String
+    var isSecure: Bool = false
 
-        let parameters: [String: String] = [
-            "email": email,
-            "password": password
-        ]
+    func makeUIView(context: Context) -> UITextField {
+        let textField = UITextField()
+        textField.delegate = context.coordinator
+        textField.placeholder = placeholder
+        textField.text = text
+        textField.isSecureTextEntry = isSecure
+        textField.borderStyle = .roundedRect
+        textField.autocorrectionType = .no
+        textField.autocapitalizationType = .none
+        textField.keyboardType = isSecure ? .default : .emailAddress
+        textField.textContentType = .none // 💥 Key to stop AutoFill
+        textField.inputAssistantItem.leadingBarButtonGroups = [] // 💥 Remove QuickType bar
+        textField.inputAssistantItem.trailingBarButtonGroups = []
 
-        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
-            .validate()
-            .responseData { response in
-                switch response.result {
-                case .success(let data):
-                    do {
-                        let decoded = try JSONDecoder().decode(LoginResponse.self, from: data)
-                        UserDefaults.standard.set(decoded.access_token, forKey: "userToken")
-
-                        if let role = UserRole(rawValue: decoded.user.role) {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                switch role {
-                                case .client:
-                                    isClientLoggedIn = true
-                                case .tasker:
-                                    isTaskerLoggedIn = true
-                                }
-                            }
-                        } else {
-                            alertMessage = "Unknown role: \(decoded.user.role)"
-                            showAlert = true
-                        }
-                    } catch {
-                        alertMessage = "Decoding failed: \(error.localizedDescription)"
-                        showAlert = true
-                    }
-
-                case .failure(let error):
-                    alertMessage = "Network Error: \(error.localizedDescription)"
-                    showAlert = true
-                }
-            }
+        return textField
     }
 
+    func updateUIView(_ uiView: UITextField, context: Context) {
+        uiView.text = text
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+}
+
+// MARK: - Login View
+struct LoginView: View {
+    @State private var email = ""
+    @State private var password = ""
+    @State private var showAlert = false
+    @State private var alertMessage = ""
+    @EnvironmentObject private var router: Router
+    
+    private let dbManager = DatabaseManager.shared
+    
+    var body: some View {
+        VStack(spacing: 20) {
+            // Logo and Title
+            VStack(spacing: 10) {
+                Image("logo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 100, height: 100)
+                
+                Text("Welcome Back!")
+                    .font(.title)
+                    .bold()
+                
+                Text("Sign in to continue")
+                    .foregroundColor(.gray)
+            }
+            .padding(.top, 50)
+            
+            // Login Form
+            VStack(spacing: 15) {
+                CustomTextField(text: $email, placeholder: "Email")
+                
+                CustomTextField(text: $password, placeholder: "Password", isSecure: true)
+                
+                Button("Forgot Password?") {
+                    // Handle forgot password
+                }
+                .foregroundColor(.purple)
+                .frame(maxWidth: .infinity, alignment: .trailing)
+            }
+            .padding(.horizontal)
+            
+            // Login Button
+            Button(action: login) {
+                Text("Login")
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.purple)
+                    .cornerRadius(10)
+            }
+            .padding(.horizontal)
+            
+            // Social Login
+            VStack(spacing: 15) {
+                Text("Or continue with")
+                    .foregroundColor(.gray)
+                
+                HStack(spacing: 20) {
+                    socialLoginButton(image: "google", text: "Google")
+                    socialLoginButton(image: "apple", text: "Apple")
+                }
+            }
+            .padding(.top)
+            
+            Spacer()
+            
+            // Sign Up Link
+            HStack {
+                Text("Don't have an account?")
+                    .foregroundColor(.gray)
+                Button("Sign Up") {
+                    router.navigate(to: .signup)
+                }
+                .foregroundColor(.purple)
+            }
+            .padding(.bottom)
+        }
+        .padding()
+        .alert("Message", isPresented: $showAlert) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text(alertMessage)
+        }
+    }
+    
+    func login() {
+        do {
+            if let user = try DatabaseManager.shared.getUser(email: email, password: password) {
+                router.handleAuthentication(user: user)
+            } else {
+                alertMessage = "Invalid email or password"
+                showAlert = true
+            }
+        } catch {
+            alertMessage = "Login error: \(error.localizedDescription)"
+            showAlert = true
+        }
+    }
+    
+    func authenticateWithBiometrics() {
+        let context = LAContext()
+        var error: NSError?
+        
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "Authenticate to access your account."
+            
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
+                DispatchQueue.main.async {
+                    if success {
+                        // For biometric login, we'll use a default user for now
+                        // In a real app, you would retrieve the user from secure storage
+                        let defaultUser = User(
+                            id: 1,
+                            name: "Default User",
+                            email: "default@example.com",
+                            email_verified_at: nil,
+                            created_at: ISO8601DateFormatter().string(from: Date()),
+                            updated_at: ISO8601DateFormatter().string(from: Date()),
+                            role: "client"
+                        )
+                        router.handleAuthentication(user: defaultUser)
+                    } else {
+                        alertMessage = "Authentication failed. Please try again."
+                        showAlert = true
+                    }
+                }
+            }
+        } else {
+            alertMessage = "Biometric authentication is not available on this device."
+            showAlert = true
+        }
+    }
+    
     // MARK: - Social Login Button
     func socialLoginButton(image: String, text: String) -> some View {
         HStack {
@@ -159,39 +197,7 @@ struct LoginView: View {
     }
 }
 
-// MARK: - Enums & Models
-enum UserRole: String {
-    case client
-    case tasker
-}
-
-struct LoginResponse: Decodable {
-    let message: String
-    let access_token: String
-    let token_type: String
-    let user: User
-}
-
-struct User: Decodable {
-    let id: Int
-    let name: String
-    let email: String
-    let email_verified_at: String?
-    let created_at: String
-    let updated_at: String
-    let role: String
-}
-
-// MARK: - Placeholder Views
-struct SignupView: View {
-    var body: some View {
-        Text("Signup Screen")
-    }
-}
-
-
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
-    }
+#Preview {
+    LoginView()
+        .environmentObject(Router())
 }

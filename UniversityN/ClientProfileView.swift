@@ -24,12 +24,21 @@ struct MainTabView: View {
                     }
                     .tag(1)
 
-                Text("Create New")
-                    .tabItem {
-                        Image(systemName: "plus.circle")
-                        Text("New")
-                    }
-                    .tag(2)
+//                Text("Create New")
+//                    .tabItem {
+//                        Image(systemName: "plus.circle")
+//                        Text("New")
+//                    }
+//                    .tag(2)
+                     // Create New tab
+                NavigationView {
+                    CreateTaskView()
+                }
+                .tabItem {
+                    Image(systemName: "plus.circle")
+                    Text("New")
+                }
+                .tag(2)
 
                 Text("Notifications")
                     .tabItem {
@@ -119,10 +128,20 @@ struct ClientProfileView: View {
 
                         Spacer()
 
-                        Button(action: {}) {
-                            Image(systemName: "square.and.arrow.up")
-                                .foregroundColor(.purple)
+//                        Button(action: {}) {
+//                            Image(systemName: "square.and.arrow.up")
+//                                .foregroundColor(.purple)
+//                        }
+                        NavigationLink(destination: LoginView()) {
+                            Button(action: {
+                                // Add any logout logic here, such as clearing user data
+                            }) {
+                                Image(systemName: "arrow.right.circle.fill") // Logout icon
+                                    .foregroundColor(.purple)
+                                    .font(.system(size: 30)) // Adjust size if needed
+                            }
                         }
+
                     }
 
                     // Spend and Jobs

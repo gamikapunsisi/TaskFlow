@@ -23,61 +23,131 @@
 import SwiftUI
 import Foundation
 
-
-class TaskViewModel: ObservableObject {
-    @Published var tasks: [Task] = []
-
-    // Function to fetch tasks from the API
-    func fetchTasks() {
-        guard let url = URL(string: "http://localhost:8000/api/tasks") else {
-            print("Invalid URL")
-            return
-        }
-
-        // Create a URLSession data task to fetch the tasks
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            // Handle any errors
-            if let error = error {
-                print("Error fetching tasks: \(error.localizedDescription)")
-                return
-            }
-
-            // Check for a valid response
-            guard let data = data else {
-                print("No data received")
-                return
-            }
-
-            // Attempt to decode the data into Task objects
-            do {
-                let decoder = JSONDecoder()
-                let decodedTasks = try decoder.decode([Task].self, from: data)
-                DispatchQueue.main.async {
-                    // Update the tasks array on the main thread
-                    self.tasks = decodedTasks
-                }
-            } catch {
-                print("Error decoding tasks: \(error.localizedDescription)")
-            }
-        }
-        .resume() // Start the data task
+// MARK: - Task Model
+struct Task: Identifiable, Codable {
+    let id: Int
+    let title: String
+    let description: String
+    let budget: Int
+    let category: String
+    let deadline: String
+    let status: String
+    let userId: Int
+    let createdAt: String
+    let updatedAt: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case title
+        case description
+        case budget
+        case category
+        case deadline
+        case status
+        case userId = "user_id"
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
     }
 }
 
-// Task struct inside the same file
-// Task Model with computed proposalsCount
-struct Task: Identifiable, Decodable {
-    let id: Int?
-    var title: String
-    var description: String
-    var budget: String?
-    var category: String
-    var deadline: String
-    var status: String?
-    var createdAt: String?
-    var updatedAt: String?
-    var bids: [String]?
-    var proposalsCount: Int?  // Optional
+// MARK: - Task View Model
+class TaskViewModel: ObservableObject {
+    @Published var tasks: [Task] = []
+    @Published var isLoading = false
+    @Published var error: String?
+    
+    public let dbManager = Databas
+    
+    init() {
+        fetchTasks()
+    }
+    
+    // MARK: - Task Operations
+    func fetchTasks() {
+        isLoading = true
+        error = nil
+        
+        do {
+            tasks = try dbManager.getTasks()
+            isLoading = false
+        } catch {
+            self.error = error.localizedDescription
+            isLoading = false
+        }
+    }
+    
+    func createTask(title: String, description: String, budget: Int, category: String, deadline: String, userId: Int) {
+        do {
+            try dbManager.createTask(
+                title: title,
+                description: description,
+                budget: budget,
+                category: category,
+                deadline: deadline,
+                userId: userId
+            )
+            fetchTasks() // Refresh the task list
+        } catch {
+            self.error = error.localizedDescription
+        }
+    }
+    
+    func updateTaskStatus(taskId: Int, status: String) {
+        do {
+            try dbManager.updateTaskStatus(taskId: taskId, status: status)
+            fetchTasks() // Refresh the task list
+        } catch {
+            self.error = error.localizedDescription
+        }
+    }
+    
+    func deleteTask(taskId: Int) {
+        do {
+            try dbManager.deleteTask(taskId: taskId)
+            fetchTasks() // Refresh the task list
+        } catch {
+            self.error = error.localizedDescription
+        }
+    }
+    
+    // MARK: - Proposal Operations
+    func submitProposal(taskId: Int, userId: Int, amount: Int, message: String) {
+        do {
+            try dbManager.createProposal(
+                taskId: taskId,
+                userId: userId,
+                amount: amount,
+                message: message
+            )
+        } catch {
+            self.error = error.localizedDescription
+        }
+    }
+    
+    func getProposals(for taskId: Int) -> [Proposal] {
+        do {
+            return try dbManager.getProposals(taskId: taskId)
+        } catch {
+            self.error = error.localizedDescription
+            return []
+        }
+    }
+    
+    func acceptProposal(proposalId: Int) {
+        do {
+            try dbManager.acceptProposal(proposalId: proposalId)
+        } catch {
+            self.error = error.localizedDescription
+        }
+    }
+    
+    func rejectProposal(proposalId: Int) {
+        do {
+            try dbManager.rejectProposal(proposalId: proposalId)
+        } catch {
+            self.error = error.localizedDescription
+        }
+    }
 }
 
 

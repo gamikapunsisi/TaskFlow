@@ -1,0 +1,19 @@
+# Build artifacts
+.build/
+*.xcuserstate
+xcuserdata/
+DerivedData/
+
+# Swift Package Manager
+.swiftpm/
+Package.resolved
+
+# Firebase
+GoogleService-Info.plist
+
+# macOS
+.DS_Store
+
+# Temporary files
+*.tmp
+*~

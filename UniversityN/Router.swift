@@ -22,6 +22,7 @@ enum Route: Hashable {
     case contracts
     case clientContracts
     case alerts
+    case debug  // Debug console for development
 }
 
 class Router: ObservableObject {
@@ -118,6 +119,9 @@ struct RouterView: View {
                     .environmentObject(router)
             case .alerts:
                 AlertsView()
+                    .environmentObject(router)
+            case .debug:
+                DebugView()
                     .environmentObject(router)
             }
         }

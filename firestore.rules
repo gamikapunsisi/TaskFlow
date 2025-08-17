@@ -1,0 +1,232 @@
+// Firestore Security Rules for UniversityN TaskFlow Application
+// Version: 2
+// Updated: 2024
+//
+// These rules provide secure access patterns for the TaskFlow application
+// while maintaining proper authentication and authorization checks.
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper functions for common checks
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner(resource) {
+      return request.auth.uid == resource.data.userId;
+    }
+    
+    function isValidUser(userId) {
+      return request.auth != null && request.auth.uid == userId;
+    }
+    
+    function isValidEmail() {
+      return request.auth != null && request.auth.token.email_verified == true;
+    }
+    
+    // Users collection - users can manage their own profile
+    match /users/{userId} {
+      // Allow read access to own profile
+      allow read: if isValidUser(userId);
+      
+      // Allow create/update of own profile with validation
+      allow create, update: if isValidUser(userId)
+        && validateUserData(request.resource.data)
+        && request.resource.data.id == request.auth.uid;
+      
+      // Allow delete of own profile
+      allow delete: if isValidUser(userId);
+      
+      // Validate user profile data structure
+      function validateUserData(data) {
+        return data.keys().hasAll(['name', 'email', 'role', 'created_at', 'updated_at'])
+          && data.name is string && data.name.size() > 0 && data.name.size() <= 100
+          && data.email is string && data.email.matches('.*@.*\\..*')
+          && data.role is string && data.role in ['client', 'tasker']
+          && data.created_at is timestamp
+          && data.updated_at is timestamp;
+      }
+    }
+    
+    // Tasks collection - secure task management
+    match /tasks/{taskId} {
+      // Allow read access to all authenticated users (for browsing)
+      allow read: if isAuthenticated();
+      
+      // Allow task creation by authenticated users
+      allow create: if isAuthenticated()
+        && validateTaskData(request.resource.data)
+        && request.resource.data.userId == request.auth.uid;
+      
+      // Allow update/delete by task owner only
+      allow update: if isAuthenticated()
+        && isOwner(resource)
+        && validateTaskData(request.resource.data)
+        && request.resource.data.userId == request.auth.uid;
+      
+      allow delete: if isAuthenticated() && isOwner(resource);
+      
+      // Validate task data structure and constraints
+      function validateTaskData(data) {
+        return data.keys().hasAll(['title', 'description', 'budget', 'category', 'deadline', 'status', 'userId'])
+          && data.title is string && data.title.size() > 0 && data.title.size() <= 200
+          && data.description is string && data.description.size() > 0 && data.description.size() <= 2000
+          && data.budget is int && data.budget > 0 && data.budget <= 100000
+          && data.category is string && data.category.size() > 0 && data.category.size() <= 50
+          && data.deadline is timestamp
+          && data.status is string && data.status in ['open', 'in_progress', 'completed', 'cancelled']
+          && data.userId is string;
+      }
+    }
+    
+    // Proposals collection - secure proposal management
+    match /proposals/{proposalId} {
+      // Allow read access to task owner and proposal creator
+      allow read: if isAuthenticated() && (
+        request.auth.uid == resource.data.userId ||
+        request.auth.uid == resource.data.taskOwnerId
+      );
+      
+      // Allow proposal creation by authenticated users (not task owner)
+      allow create: if isAuthenticated()
+        && validateProposalData(request.resource.data)
+        && request.resource.data.userId == request.auth.uid
+        && request.auth.uid != request.resource.data.taskOwnerId;
+      
+      // Allow proposal updates by proposal creator only
+      allow update: if isAuthenticated()
+        && request.auth.uid == resource.data.userId
+        && validateProposalData(request.resource.data)
+        && request.resource.data.userId == request.auth.uid;
+      
+      // Allow proposal deletion by proposal creator or task owner
+      allow delete: if isAuthenticated() && (
+        request.auth.uid == resource.data.userId ||
+        request.auth.uid == resource.data.taskOwnerId
+      );
+      
+      // Validate proposal data structure
+      function validateProposalData(data) {
+        return data.keys().hasAll(['taskId', 'userId', 'taskOwnerId', 'amount', 'message', 'status'])
+          && data.taskId is string
+          && data.userId is string
+          && data.taskOwnerId is string
+          && data.amount is int && data.amount > 0 && data.amount <= 100000
+          && data.message is string && data.message.size() <= 1000
+          && data.status is string && data.status in ['pending', 'accepted', 'rejected'];
+      }
+    }
+    
+    // Contracts collection - secure contract management
+    match /contracts/{contractId} {
+      // Allow read access to involved parties only
+      allow read: if isAuthenticated() && (
+        request.auth.uid == resource.data.clientId ||
+        request.auth.uid == resource.data.taskerId
+      );
+      
+      // Allow contract creation by task owners when accepting proposals
+      allow create: if isAuthenticated()
+        && validateContractData(request.resource.data)
+        && request.auth.uid == request.resource.data.clientId;
+      
+      // Allow contract updates by involved parties
+      allow update: if isAuthenticated()
+        && (request.auth.uid == resource.data.clientId || request.auth.uid == resource.data.taskerId)
+        && validateContractData(request.resource.data);
+      
+      // Contract deletion restricted to specific conditions
+      allow delete: if isAuthenticated()
+        && request.auth.uid == resource.data.clientId
+        && resource.data.status in ['pending', 'cancelled'];
+      
+      // Validate contract data structure
+      function validateContractData(data) {
+        return data.keys().hasAll(['taskId', 'proposalId', 'clientId', 'taskerId', 'amount', 'status'])
+          && data.taskId is string
+          && data.proposalId is string
+          && data.clientId is string
+          && data.taskerId is string
+          && data.amount is int && data.amount > 0
+          && data.status is string && data.status in ['pending', 'active', 'completed', 'cancelled', 'disputed'];
+      }
+    }
+    
+    // Reviews collection - secure review management
+    match /reviews/{reviewId} {
+      // Allow read access to all authenticated users
+      allow read: if isAuthenticated();
+      
+      // Allow review creation by involved parties after contract completion
+      allow create: if isAuthenticated()
+        && validateReviewData(request.resource.data)
+        && request.resource.data.reviewerId == request.auth.uid;
+      
+      // Allow review updates by reviewer only (within time limit)
+      allow update: if isAuthenticated()
+        && request.auth.uid == resource.data.reviewerId
+        && validateReviewData(request.resource.data)
+        && request.resource.data.reviewerId == request.auth.uid;
+      
+      // Reviews cannot be deleted (data integrity)
+      allow delete: if false;
+      
+      // Validate review data structure
+      function validateReviewData(data) {
+        return data.keys().hasAll(['contractId', 'reviewerId', 'revieweeId', 'rating', 'comment'])
+          && data.contractId is string
+          && data.reviewerId is string
+          && data.revieweeId is string
+          && data.rating is int && data.rating >= 1 && data.rating <= 5
+          && data.comment is string && data.comment.size() <= 500;
+      }
+    }
+    
+    // Messages collection - secure messaging
+    match /messages/{messageId} {
+      // Allow read access to sender and recipient
+      allow read: if isAuthenticated() && (
+        request.auth.uid == resource.data.senderId ||
+        request.auth.uid == resource.data.recipientId
+      );
+      
+      // Allow message creation by authenticated users
+      allow create: if isAuthenticated()
+        && validateMessageData(request.resource.data)
+        && request.resource.data.senderId == request.auth.uid;
+      
+      // Messages cannot be updated or deleted (audit trail)
+      allow update, delete: if false;
+      
+      // Validate message data structure
+      function validateMessageData(data) {
+        return data.keys().hasAll(['senderId', 'recipientId', 'content', 'timestamp'])
+          && data.senderId is string
+          && data.recipientId is string
+          && data.content is string && data.content.size() > 0 && data.content.size() <= 1000
+          && data.timestamp is timestamp
+          && data.senderId != data.recipientId; // Cannot message yourself
+      }
+    }
+    
+    // Admin collection - restricted access
+    match /admin/{document=**} {
+      // Only allow access to admin users (custom claims required)
+      allow read, write: if request.auth != null 
+        && request.auth.token.admin == true;
+    }
+    
+    // Analytics and logs - write-only for app, read for admin
+    match /analytics/{document=**} {
+      allow read: if request.auth != null && request.auth.token.admin == true;
+      allow write: if isAuthenticated();
+    }
+    
+    // Default deny rule for any unmatched documents
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

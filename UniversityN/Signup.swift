@@ -2,16 +2,9 @@ import SwiftUI
 import Foundation
 
 struct SignUpView: View {
-    @State private var fullName = ""
-    @State private var email = ""
-    @State private var password = ""
-    @State private var confirmPassword = ""
-    @State private var selectedRole = "client"
-    @State private var showAlert = false
-    @State private var alertMessage = ""
+    @StateObject private var authViewModel = AuthViewModel()
     @EnvironmentObject private var router: Router
     
-    private let dbManager = DatabaseManager.shared
     private let roles = ["client", "tasker"]
     
     var body: some View {
@@ -32,48 +25,150 @@ struct SignUpView: View {
             }
             .padding(.top, 50)
             
-            // Registration Form
+            // Registration Form with Enhanced Error Handling
             VStack(spacing: 15) {
-                TextField("Full Name", text: $fullName)
-                    .textFieldStyle(.roundedBorder)
-                    .textContentType(.name)
-                    .autocorrectionDisabled(true)
-                    .textInputAutocapitalization(.words)
-                
-                TextField("Email", text: $email)
-                    .textFieldStyle(.roundedBorder)
-                    .textContentType(.emailAddress)
-                    .keyboardType(.emailAddress)
-                    .autocorrectionDisabled(true)
-                    .textInputAutocapitalization(.never)
-                
-                SecureField("Password", text: $password)
-                    .textFieldStyle(.roundedBorder)
-                    .textContentType(.newPassword)
-                
-                SecureField("Confirm Password", text: $confirmPassword)
-                    .textFieldStyle(.roundedBorder)
-                    .textContentType(.newPassword)
-                
-                Picker("Role", selection: $selectedRole) {
-                    ForEach(roles, id: \.self) { role in
-                        Text(role.capitalized)
+                // Full Name Field with Error Handling
+                VStack(alignment: .leading, spacing: 4) {
+                    TextField("Full Name", text: $authViewModel.fullNameField.value)
+                        .textFieldStyle(.roundedBorder)
+                        .textContentType(.name)
+                        .autocorrectionDisabled(true)
+                        .textInputAutocapitalization(.words)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(authViewModel.fullNameField.hasError ? Color.red : Color.clear, lineWidth: 1)
+                        )
+                    
+                    if let error = authViewModel.fullNameField.errorMessage {
+                        Text(error)
+                            .font(.caption)
+                            .foregroundColor(.red)
                     }
                 }
-                .pickerStyle(.segmented)
+                
+                // Email Field with Error Handling
+                VStack(alignment: .leading, spacing: 4) {
+                    TextField("Email", text: $authViewModel.emailField.value)
+                        .textFieldStyle(.roundedBorder)
+                        .textContentType(.emailAddress)
+                        .keyboardType(.emailAddress)
+                        .autocorrectionDisabled(true)
+                        .textInputAutocapitalization(.never)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(authViewModel.emailField.hasError ? Color.red : Color.clear, lineWidth: 1)
+                        )
+                    
+                    if let error = authViewModel.emailField.errorMessage {
+                        Text(error)
+                            .font(.caption)
+                            .foregroundColor(.red)
+                    }
+                }
+                
+                // Password Field with Error Handling
+                VStack(alignment: .leading, spacing: 4) {
+                    SecureField("Password", text: $authViewModel.passwordField.value)
+                        .textFieldStyle(.roundedBorder)
+                        .textContentType(.newPassword)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(authViewModel.passwordField.hasError ? Color.red : Color.clear, lineWidth: 1)
+                        )
+                    
+                    if let error = authViewModel.passwordField.errorMessage {
+                        Text(error)
+                            .font(.caption)
+                            .foregroundColor(.red)
+                    }
+                }
+                
+                // Confirm Password Field with Error Handling
+                VStack(alignment: .leading, spacing: 4) {
+                    SecureField("Confirm Password", text: $authViewModel.confirmPasswordField.value)
+                        .textFieldStyle(.roundedBorder)
+                        .textContentType(.newPassword)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(authViewModel.confirmPasswordField.hasError ? Color.red : Color.clear, lineWidth: 1)
+                        )
+                    
+                    if let error = authViewModel.confirmPasswordField.errorMessage {
+                        Text(error)
+                            .font(.caption)
+                            .foregroundColor(.red)
+                    }
+                }
+                
+                // Role Selection
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("I want to:")
+                        .font(.subheadline)
+                        .fontWeight(.medium)
+                    
+                    Picker("Role", selection: $authViewModel.selectedRole) {
+                        Text("Hire services (Client)").tag("client")
+                        Text("Offer services (Tasker)").tag("tasker")
+                    }
+                    .pickerStyle(.segmented)
+                }
             }
             .padding(.horizontal)
             
-            // Sign Up Button
-            Button(action: registerUser) {
-                Text("Sign Up")
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.purple)
-                    .cornerRadius(10)
+            // Sign Up Button with Loading State
+            Button(action: { 
+                Task {
+                    await authViewModel.signUp()
+                }
+            }) {
+                HStack {
+                    if authViewModel.isLoading {
+                        ProgressView()
+                            .scaleEffect(0.8)
+                            .foregroundColor(.white)
+                    }
+                    Text(authViewModel.isLoading ? "Creating Account..." : "Sign Up")
+                        .foregroundColor(.white)
+                }
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(authViewModel.isFormValid && !authViewModel.isLoading ? Color.purple : Color.gray)
+                .cornerRadius(10)
             }
+            .disabled(!authViewModel.isFormValid || authViewModel.isLoading)
             .padding(.horizontal)
+            
+            // Debug Information (Development Only)
+            if authViewModel.showDebugInfo {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Debug Information")
+                        .font(.headline)
+                        .padding(.top)
+                    
+                    Text("Configuration Status: \(firebaseManager.configurationStatus)")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                    
+                    Text("Network Available: \(firebaseManager.isNetworkAvailable ? "Yes" : "No")")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                    
+                    Text("Form Valid: \(authViewModel.isFormValid ? "Yes" : "No")")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                }
+                .padding(.horizontal)
+            }
+            
+            // Debug Toggle Button (Development Only)
+            #if DEBUG
+            Button("Toggle Debug Info") {
+                authViewModel.toggleDebugInfo()
+            }
+            .font(.caption)
+            .foregroundColor(.gray)
+            .padding(.top, 5)
+            #endif
             
             Spacer()
             
@@ -89,67 +184,32 @@ struct SignUpView: View {
             .padding(.bottom)
         }
         .padding()
-        .alert("Message", isPresented: $showAlert) {
-            Button("OK", role: .cancel) { }
+        .alert(authViewModel.alertTitle, isPresented: $authViewModel.showAlert) {
+            Button("OK", role: .cancel) { 
+                authViewModel.clearErrors()
+            }
         } message: {
-            Text(alertMessage)
+            Text(authViewModel.alertMessage)
+        }
+        .onChange(of: authManager.isAuthenticated) { isAuthenticated in
+            if isAuthenticated, let user = authManager.currentUser {
+                router.handleAuthentication(user: user)
+            }
+        }
+        .onAppear {
+            // Initialize Firebase configuration check
+            firebaseManager.validateConfiguration()
         }
     }
     
-    func registerUser() {
-        // Validate input
-        guard !fullName.isEmpty else {
-            alertMessage = "Please enter your full name"
-            showAlert = true
-            return
-        }
-        
-        guard !email.isEmpty else {
-            alertMessage = "Please enter your email"
-            showAlert = true
-            return
-        }
-        
-        guard !password.isEmpty else {
-            alertMessage = "Please enter a password"
-            showAlert = true
-            return
-        }
-        
-        guard password == confirmPassword else {
-            alertMessage = "Passwords do not match"
-            showAlert = true
-            return
-        }
-        
-        do {
-            let userId = try DatabaseManager.shared.createUser(
-                name: fullName,
-                email: email,
-                password: password,
-                role: selectedRole
-            )
-            
-            // Create a user object for authentication
-            let user = User(
-                id: userId,
-                name: fullName,
-                email: email,
-                email_verified_at: nil,
-                created_at: ISO8601DateFormatter().string(from: Date()),
-                updated_at: ISO8601DateFormatter().string(from: Date()),
-                role: selectedRole
-            )
-            
-            alertMessage = "Registration successful!"
-            showAlert = true
-            
-            // Handle authentication after successful registration
-            router.handleAuthentication(user: user)
-        } catch {
-            alertMessage = "Registration failed: \(error.localizedDescription)"
-            showAlert = true
-        }
+    // Firebase Manager reference for debug info
+    private var firebaseManager: FirebaseManager {
+        FirebaseManager.shared
+    }
+    
+    // Auth Manager reference for authentication state
+    private var authManager: AuthManager {
+        AuthManager.shared
     }
 }
 

@@ -56,7 +56,7 @@ class TaskViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var error: String?
     
-    public let dbManager = Databas
+    private let dbManager = DatabaseManager.shared
     
     init() {
         fetchTasks()

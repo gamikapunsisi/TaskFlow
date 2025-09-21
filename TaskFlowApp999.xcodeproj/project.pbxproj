@@ -1,0 +1,627 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		17F4485E2E7FCE3A001C43D2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 17F4485D2E7FCE3A001C43D2 /* FirebaseAuth */; };
+		17F448602E7FCE3A001C43D2 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 17F4485F2E7FCE3A001C43D2 /* FirebaseCore */; };
+		17F448622E7FCE3A001C43D2 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 17F448612E7FCE3A001C43D2 /* FirebaseFirestore */; };
+		17F448642E7FCE3A001C43D2 /* FirebaseInstallations in Frameworks */ = {isa = PBXBuildFile; productRef = 17F448632E7FCE3A001C43D2 /* FirebaseInstallations */; };
+		17F448662E7FCE3A001C43D2 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 17F448652E7FCE3A001C43D2 /* FirebaseStorage */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		17D908192E7D0C410022BF22 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17D907FE2E7D0C3E0022BF22 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17D908052E7D0C3E0022BF22;
+			remoteInfo = TaskFlowApp999;
+		};
+		17D908232E7D0C410022BF22 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17D907FE2E7D0C3E0022BF22 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17D908052E7D0C3E0022BF22;
+			remoteInfo = TaskFlowApp999;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		17D908062E7D0C3E0022BF22 /* TaskFlowApp999.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskFlowApp999.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		17D908182E7D0C410022BF22 /* TaskFlowApp999Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskFlowApp999Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		17D908222E7D0C410022BF22 /* TaskFlowApp999UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskFlowApp999UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		17D908082E7D0C3E0022BF22 /* TaskFlowApp999 */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TaskFlowApp999;
+			sourceTree = "<group>";
+		};
+		17D9081B2E7D0C410022BF22 /* TaskFlowApp999Tests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TaskFlowApp999Tests;
+			sourceTree = "<group>";
+		};
+		17D908252E7D0C410022BF22 /* TaskFlowApp999UITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TaskFlowApp999UITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		17D908032E7D0C3E0022BF22 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17F448602E7FCE3A001C43D2 /* FirebaseCore in Frameworks */,
+				17F4485E2E7FCE3A001C43D2 /* FirebaseAuth in Frameworks */,
+				17F448622E7FCE3A001C43D2 /* FirebaseFirestore in Frameworks */,
+				17F448662E7FCE3A001C43D2 /* FirebaseStorage in Frameworks */,
+				17F448642E7FCE3A001C43D2 /* FirebaseInstallations in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17D908152E7D0C410022BF22 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17D9081F2E7D0C410022BF22 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		17D907FD2E7D0C3E0022BF22 = {
+			isa = PBXGroup;
+			children = (
+				17D908082E7D0C3E0022BF22 /* TaskFlowApp999 */,
+				17D9081B2E7D0C410022BF22 /* TaskFlowApp999Tests */,
+				17D908252E7D0C410022BF22 /* TaskFlowApp999UITests */,
+				17D908072E7D0C3E0022BF22 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		17D908072E7D0C3E0022BF22 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				17D908062E7D0C3E0022BF22 /* TaskFlowApp999.app */,
+				17D908182E7D0C410022BF22 /* TaskFlowApp999Tests.xctest */,
+				17D908222E7D0C410022BF22 /* TaskFlowApp999UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		17D908052E7D0C3E0022BF22 /* TaskFlowApp999 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17D9082C2E7D0C410022BF22 /* Build configuration list for PBXNativeTarget "TaskFlowApp999" */;
+			buildPhases = (
+				17D908022E7D0C3E0022BF22 /* Sources */,
+				17D908032E7D0C3E0022BF22 /* Frameworks */,
+				17D908042E7D0C3E0022BF22 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				17D908082E7D0C3E0022BF22 /* TaskFlowApp999 */,
+			);
+			name = TaskFlowApp999;
+			packageProductDependencies = (
+				17F4485D2E7FCE3A001C43D2 /* FirebaseAuth */,
+				17F4485F2E7FCE3A001C43D2 /* FirebaseCore */,
+				17F448612E7FCE3A001C43D2 /* FirebaseFirestore */,
+				17F448632E7FCE3A001C43D2 /* FirebaseInstallations */,
+				17F448652E7FCE3A001C43D2 /* FirebaseStorage */,
+			);
+			productName = TaskFlowApp999;
+			productReference = 17D908062E7D0C3E0022BF22 /* TaskFlowApp999.app */;
+			productType = "com.apple.product-type.application";
+		};
+		17D908172E7D0C410022BF22 /* TaskFlowApp999Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17D9082F2E7D0C410022BF22 /* Build configuration list for PBXNativeTarget "TaskFlowApp999Tests" */;
+			buildPhases = (
+				17D908142E7D0C410022BF22 /* Sources */,
+				17D908152E7D0C410022BF22 /* Frameworks */,
+				17D908162E7D0C410022BF22 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				17D9081A2E7D0C410022BF22 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				17D9081B2E7D0C410022BF22 /* TaskFlowApp999Tests */,
+			);
+			name = TaskFlowApp999Tests;
+			packageProductDependencies = (
+			);
+			productName = TaskFlowApp999Tests;
+			productReference = 17D908182E7D0C410022BF22 /* TaskFlowApp999Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		17D908212E7D0C410022BF22 /* TaskFlowApp999UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17D908322E7D0C410022BF22 /* Build configuration list for PBXNativeTarget "TaskFlowApp999UITests" */;
+			buildPhases = (
+				17D9081E2E7D0C410022BF22 /* Sources */,
+				17D9081F2E7D0C410022BF22 /* Frameworks */,
+				17D908202E7D0C410022BF22 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				17D908242E7D0C410022BF22 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				17D908252E7D0C410022BF22 /* TaskFlowApp999UITests */,
+			);
+			name = TaskFlowApp999UITests;
+			packageProductDependencies = (
+			);
+			productName = TaskFlowApp999UITests;
+			productReference = 17D908222E7D0C410022BF22 /* TaskFlowApp999UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		17D907FE2E7D0C3E0022BF22 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					17D908052E7D0C3E0022BF22 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					17D908172E7D0C410022BF22 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 17D908052E7D0C3E0022BF22;
+					};
+					17D908212E7D0C410022BF22 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 17D908052E7D0C3E0022BF22;
+					};
+				};
+			};
+			buildConfigurationList = 17D908012E7D0C3E0022BF22 /* Build configuration list for PBXProject "TaskFlowApp999" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 17D907FD2E7D0C3E0022BF22;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				17D908A22E7D169D0022BF22 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 17D908072E7D0C3E0022BF22 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				17D908052E7D0C3E0022BF22 /* TaskFlowApp999 */,
+				17D908172E7D0C410022BF22 /* TaskFlowApp999Tests */,
+				17D908212E7D0C410022BF22 /* TaskFlowApp999UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		17D908042E7D0C3E0022BF22 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17D908162E7D0C410022BF22 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17D908202E7D0C410022BF22 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		17D908022E7D0C3E0022BF22 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17D908142E7D0C410022BF22 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17D9081E2E7D0C410022BF22 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		17D9081A2E7D0C410022BF22 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 17D908052E7D0C3E0022BF22 /* TaskFlowApp999 */;
+			targetProxy = 17D908192E7D0C410022BF22 /* PBXContainerItemProxy */;
+		};
+		17D908242E7D0C410022BF22 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 17D908052E7D0C3E0022BF22 /* TaskFlowApp999 */;
+			targetProxy = 17D908232E7D0C410022BF22 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		17D9082A2E7D0C410022BF22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = TB42592928;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		17D9082B2E7D0C410022BF22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = TB42592928;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		17D9082D2E7D0C410022BF22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TB42592928;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "This app uses Face ID for secure login authentication";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app shows customer locations for service bookings\nstruct UpcomingContractsView: View {\n    @StateObject private var bookingManager = BookingManager()\n    @State private var selectedDate: Date = Date()\n    \n    // Filter bookings for the selected date\n    var bookingsForSelectedDate: [ServiceBooking] {\n        bookingManager.currentBookings.filter {\n            Calendar.current.isDate($0.scheduledDate, inSameDayAs: selectedDate)\n        }\n    }\n    \n    var body: some View {\n        NavigationView {\n            ScrollView {\n                VStack(spacing: 24) {\n                    CalendarWeekView(\n                        selectedDate: $selectedDate,\n                        bookings: bookingManager.currentBookings\n                    )\n                    \n                    VStack(spacing: 16) {\n                        if bookingManager.isLoading {\n                            ProgressView(\"Loading bookings...\")\n                                .frame(maxWidth: .infinity, minHeight: 200)\n                        } else if bookingsForSelectedDate.isEmpty {\n                            VStack(spacing: 16) {\n                                Image(systemName: \"calendar.badge.exclamationmark\")\n                                    .font(.system(size: 50))\n                                    .foregroundColor(.gray)\n                                \n                                Text(\"No bookings scheduled\")\n                                    .font(.title2)\n                                    .foregroundColor(.secondary)\n                                \n                                Text(\"for \\(formattedSelectedDate())\")\n                                    .font(.subheadline)\n                                    .foregroundColor(.secondary)\n                            }\n                            .frame(maxWidth: .infinity, minHeight: 200)\n                        } else {\n                            ForEach(bookingsForSelectedDate) { booking in\n                                EnhancedBookingCardView(booking: booking) {\n                                    Task {\n                                        await bookingManager.updateBookingStatus(booking.id, status: .cancelled)\n                                    }\n                                }\n                            }\n                        }\n                    }\n                    .padding(.horizontal)\n                    \n                    if let errorMessage = bookingManager.errorMessage {\n                        Text(errorMessage)\n                            .foregroundColor(.red)\n                            .font(.caption)\n                            .padding()\n                    }\n                }\n                .padding(.vertical)\n            }\n            .navigationTitle(\"Upcoming Bookings\")\n            .navigationBarTitleDisplayMode(.large)\n            .refreshable {\n                let userId = \"gamikapunsisi\"\n                await bookingManager.fetchUserBookings(for: userId)\n            }\n            .onAppear {\n                let userId = \"gamikapunsisi\"\n                Task {\n                    await bookingManager.fetchUserBookings(for: userId)\n                }\n            }\n        }\n    }\n    \n    private func formattedSelectedDate() -> String {\n        let formatter = DateFormatter()\n        formatter.dateStyle = .medium\n        return formatter.string(from: selectedDate)\n    }\n}\n\n// Enhanced Booking Card with Map Integration\nstruct EnhancedBookingCardView: View {\n    let booking: ServiceBooking\n    var onCancel: () -> Void\n    @State private var showingMap = false\n    \n    var body: some View {\n        VStack(alignment: .leading, spacing: 12) {\n            // Header with service name and status\n            HStack {\n                Text(booking.serviceName)\n                    .font(.headline)\n                    .foregroundColor(.primary)\n                Spacer()\n                StatusBadge(status: booking.status)\n            }\n            \n            // Customer information\n            VStack(alignment: .leading, spacing: 6) {\n                HStack {\n                    Image(systemName: \"person.circle\")\n                        .foregroundColor(.blue)\n                        .font(.system(size: 16))\n                    Text(booking.customerName)\n                        .font(.subheadline)\n                        .fontWeight(.medium)\n                }\n                \n                HStack {\n                    Image(systemName: \"calendar\")\n                        .foregroundColor(.green)\n                        .font(.system(size: 14))\n                    Text(\"\\(booking.formattedDate) • \\(booking.formattedTime)\")\n                        .font(.caption)\n                        .foregroundColor(.secondary)\n                }\n            }\n            \n            // Address section with map button\n            VStack(alignment: .leading, spacing: 8) {\n                HStack {\n                    Image(systemName: \"location\")\n                        .foregroundColor(.red)\n                        .font(.system(size: 14))\n                    Text(\"Address:\")\n                        .font(.caption)\n                        .fontWeight(.medium)\n                        .foregroundColor(.secondary)\n                    Spacer()\n                }\n                \n                HStack {\n                    Text(booking.customerAddress)\n                        .font(.caption)\n                        .foregroundColor(.secondary)\n                        .lineLimit(2)\n                    \n                    Spacer()\n                    \n                    Button(action: {\n                        showingMap = true\n                    }) {\n                        HStack(spacing: 4) {\n                            Image(systemName: \"map\")\n                                .font(.system(size: 12))\n                            Text(\"View Map\")\n                                .font(.caption)\n                        }\n                        .padding(.horizontal, 10)\n                        .padding(.vertical, 6)\n                        .background(Color.blue)\n                        .foregroundColor(.white)\n                        .cornerRadius(8)\n                    }\n                    .buttonStyle(PlainButtonStyle())\n                }\n            }\n            \n            // Action buttons\n            HStack {\n                Button(\"Cancel Booking\") {\n                    onCancel()\n                }\n                .font(.caption)\n                .foregroundColor(.red)\n                .padding(.horizontal, 12)\n                .padding(.vertical, 6)\n                .background(Color.red.opacity(0.1))\n                .cornerRadius(6)\n                \n                Spacer()\n                \n                Text(booking.formattedPrice)\n                    .font(.caption)\n                    .fontWeight(.semibold)\n                    .foregroundColor(.green)\n            }\n            .padding(.top, 4)\n        }\n        .padding(16)\n        .background(Color(.systemBackground))\n        .overlay(\n            RoundedRectangle(cornerRadius: 12)\n                .stroke(Color(.systemGray4), lineWidth: 1)\n        )\n        .cornerRadius(12)\n        .shadow(color: .black.opacity(0.05), radius: 5, x: 0, y: 2)\n        .sheet(isPresented: $showingMap) {\n            BookingLocationMapView(\n                booking: booking\n            )\n        }\n    }\n}\n\n// Status badge component\nstruct StatusBadge: View {\n    let status: BookingStatus\n    \n    var body: some View {\n        HStack(spacing: 4) {\n            Image(systemName: status.icon)\n                .font(.system(size: 10))\n            Text(status.displayName)\n                .font(.caption)\n        }\n        .padding(.horizontal, 8)\n        .padding(.vertical, 4)\n        .background(status.color.opacity(0.15))\n        .foregroundColor(status.color)\n        .cornerRadius(6)\n    }\n}\n\n// Map view for booking location\nstruct BookingLocationMapView: View {\n    let booking: ServiceBooking\n    @Environment(\\.dismiss) private var dismiss\n    @State private var region = MKCoordinateRegion(\n        center: CLLocationCoordinate2D(latitude: 6.9271, longitude: 79.8612), // Colombo default\n        span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)\n    )\n    @State private var coordinate: CLLocationCoordinate2D?\n    @State private var isLoading = true\n    @State private var errorMessage: String?\n    \n    var body: some View {\n        NavigationView {\n            ZStack {\n                // Map view\n                Map(coordinateRegion: $region, annotationItems: coordinate.map { [MapLocation(coordinate: $0)] } ?? []) { location in\n                    MapAnnotation(coordinate: location.coordinate) {\n                        VStack(spacing: 4) {\n                            Image(systemName: \"mappin.circle.fill\")\n                                .font(.title)\n                                .foregroundColor(.red)\n                            \n                            VStack(spacing: 2) {\n                                Text(booking.customerName)\n                                    .font(.caption)\n                                    .fontWeight(.medium)\n                                Text(booking.serviceName)\n                                    .font(.caption2)\n                                    .foregroundColor(.secondary)\n                            }\n                            .padding(6)\n                            .background(.white)\n                            .cornerRadius(6)\n                            .shadow(radius: 2)\n                        }\n                    }\n                }\n                .ignoresSafeArea()\n                \n                // Loading indicator\n                if isLoading {\n                    VStack {\n                        ProgressView()\n                        Text(\"Locating address...\")\n                            .font(.caption)\n                            .foregroundColor(.secondary)\n                    }\n                    .padding()\n                    .background(.regularMaterial)\n                    .cornerRadius(10)\n                }\n                \n                // Error message\n                if let errorMessage = errorMessage {\n                    VStack {\n                        Spacer()\n                        HStack {\n                            Image(systemName: \"exclamationmark.triangle\")\n                            Text(errorMessage)\n                        }\n                        .foregroundColor(.white)\n                        .padding()\n                        .background(.red)\n                        .cornerRadius(8)\n                        .padding()\n                    }\n                }\n                \n                // Service info overlay\n                if !isLoading && coordinate != nil {\n                    VStack {\n                        HStack {\n                            VStack(alignment: .leading, spacing: 4) {\n                                Text(booking.serviceName)\n                                    .font(.headline)\n                                    .fontWeight(.semibold)\n                                Text(\"Scheduled: \\(booking.formattedDate) at \\(booking.formattedTime)\")\n                                    .font(.caption)\n                                    .foregroundColor(.secondary)\n                            }\n                            Spacer()\n                            StatusBadge(status: booking.status)\n                        }\n                        .padding()\n                        .background(.ultraThinMaterial)\n                        .cornerRadius(12)\n                        .padding(.horizontal)\n                        \n                        Spacer()\n                    }\n                }\n            }\n            .navigationTitle(\"Service Location\")\n            .navigationBarTitleDisplayMode(.inline)\n            .toolbar {\n                ToolbarItem(placement: .navigationBarLeading) {\n                    Button(\"Close\") {\n                        dismiss()\n                    }\n                }\n                \n                ToolbarItem(placement: .navigationBarTrailing) {\n                    if let coordinate = coordinate {\n                        Menu {\n                            Button(\"Get Directions\") {\n                                openInAppleMaps(coordinate: coordinate)\n                            }\n                            \n                            Button(\"Call Customer\") {\n                                callCustomer()\n                            }\n                            \n                            Button(\"Share Location\") {\n                                shareLocation(coordinate: coordinate)\n                            }\n                        } label: {\n                            Image(systemName: \"ellipsis.circle\")\n                        }\n                    }\n                }\n            }\n            .onAppear {\n                geocodeAddress()\n            }\n        }\n    }\n    \n    private func geocodeAddress() {\n        let geocoder = CLGeocoder()\n        \n        geocoder.geocodeAddressString(booking.customerAddress) { placemarks, error in\n            DispatchQueue.main.async {\n                isLoading = false\n                \n                if let error = error {\n                    errorMessage = \"Could not locate address: \\(error.localizedDescription)\"\n                    return\n                }\n                \n                guard let placemark = placemarks?.first,\n                      let location = placemark.location else {\n                    errorMessage = \"Address not found. Please verify the address with customer.\"\n                    return\n                }\n                \n                coordinate = location.coordinate\n                region = MKCoordinateRegion(\n                    center: location.coordinate,\n                    span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)\n                )\n            }\n        }\n    }\n    \n    private func openInAppleMaps(coordinate: CLLocationCoordinate2D) {\n        let placemark = MKPlacemark(coordinate: coordinate)\n        let mapItem = MKMapItem(placemark: placemark)\n        mapItem.name = \"\\(booking.customerName) - \\(booking.serviceName)\"\n        mapItem.openInMaps(launchOptions: [\n            MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving\n        ])\n    }\n    \n    private func callCustomer() {\n        let cleanPhone = booking.customerPhone.replacingOccurrences(of: \" \", with: \"\")\n        if let url = URL(string: \"tel://\\(cleanPhone)\") {\n            UIApplication.shared.open(url)\n        }\n    }\n    \n    private func shareLocation(coordinate: CLLocationCoordinate2D) {\n        let locationString = \"Location for \\(booking.serviceName): https://maps.apple.com/?ll=\\(coordinate.latitude),\\(coordinate.longitude)\"\n        \n        let activityController = UIActivityViewController(\n            activityItems: [locationString],\n            applicationActivities: nil\n        )\n        \n        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,\n           let window = windowScene.windows.first {\n            window.rootViewController?.present(activityController, animated: true)\n        }\n    }\n}\n\n// Map location model\nstruct MapLocation: Identifiable {\n    let id = UUID()\n    let coordinate: CLLocationCoordinate2D\n}";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Gamika.TaskFlowApp999;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		17D9082E2E7D0C410022BF22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TB42592928;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "This app uses Face ID for secure login authentication";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app shows customer locations for service bookings\nstruct UpcomingContractsView: View {\n    @StateObject private var bookingManager = BookingManager()\n    @State private var selectedDate: Date = Date()\n    \n    // Filter bookings for the selected date\n    var bookingsForSelectedDate: [ServiceBooking] {\n        bookingManager.currentBookings.filter {\n            Calendar.current.isDate($0.scheduledDate, inSameDayAs: selectedDate)\n        }\n    }\n    \n    var body: some View {\n        NavigationView {\n            ScrollView {\n                VStack(spacing: 24) {\n                    CalendarWeekView(\n                        selectedDate: $selectedDate,\n                        bookings: bookingManager.currentBookings\n                    )\n                    \n                    VStack(spacing: 16) {\n                        if bookingManager.isLoading {\n                            ProgressView(\"Loading bookings...\")\n                                .frame(maxWidth: .infinity, minHeight: 200)\n                        } else if bookingsForSelectedDate.isEmpty {\n                            VStack(spacing: 16) {\n                                Image(systemName: \"calendar.badge.exclamationmark\")\n                                    .font(.system(size: 50))\n                                    .foregroundColor(.gray)\n                                \n                                Text(\"No bookings scheduled\")\n                                    .font(.title2)\n                                    .foregroundColor(.secondary)\n                                \n                                Text(\"for \\(formattedSelectedDate())\")\n                                    .font(.subheadline)\n                                    .foregroundColor(.secondary)\n                            }\n                            .frame(maxWidth: .infinity, minHeight: 200)\n                        } else {\n                            ForEach(bookingsForSelectedDate) { booking in\n                                EnhancedBookingCardView(booking: booking) {\n                                    Task {\n                                        await bookingManager.updateBookingStatus(booking.id, status: .cancelled)\n                                    }\n                                }\n                            }\n                        }\n                    }\n                    .padding(.horizontal)\n                    \n                    if let errorMessage = bookingManager.errorMessage {\n                        Text(errorMessage)\n                            .foregroundColor(.red)\n                            .font(.caption)\n                            .padding()\n                    }\n                }\n                .padding(.vertical)\n            }\n            .navigationTitle(\"Upcoming Bookings\")\n            .navigationBarTitleDisplayMode(.large)\n            .refreshable {\n                let userId = \"gamikapunsisi\"\n                await bookingManager.fetchUserBookings(for: userId)\n            }\n            .onAppear {\n                let userId = \"gamikapunsisi\"\n                Task {\n                    await bookingManager.fetchUserBookings(for: userId)\n                }\n            }\n        }\n    }\n    \n    private func formattedSelectedDate() -> String {\n        let formatter = DateFormatter()\n        formatter.dateStyle = .medium\n        return formatter.string(from: selectedDate)\n    }\n}\n\n// Enhanced Booking Card with Map Integration\nstruct EnhancedBookingCardView: View {\n    let booking: ServiceBooking\n    var onCancel: () -> Void\n    @State private var showingMap = false\n    \n    var body: some View {\n        VStack(alignment: .leading, spacing: 12) {\n            // Header with service name and status\n            HStack {\n                Text(booking.serviceName)\n                    .font(.headline)\n                    .foregroundColor(.primary)\n                Spacer()\n                StatusBadge(status: booking.status)\n            }\n            \n            // Customer information\n            VStack(alignment: .leading, spacing: 6) {\n                HStack {\n                    Image(systemName: \"person.circle\")\n                        .foregroundColor(.blue)\n                        .font(.system(size: 16))\n                    Text(booking.customerName)\n                        .font(.subheadline)\n                        .fontWeight(.medium)\n                }\n                \n                HStack {\n                    Image(systemName: \"calendar\")\n                        .foregroundColor(.green)\n                        .font(.system(size: 14))\n                    Text(\"\\(booking.formattedDate) • \\(booking.formattedTime)\")\n                        .font(.caption)\n                        .foregroundColor(.secondary)\n                }\n            }\n            \n            // Address section with map button\n            VStack(alignment: .leading, spacing: 8) {\n                HStack {\n                    Image(systemName: \"location\")\n                        .foregroundColor(.red)\n                        .font(.system(size: 14))\n                    Text(\"Address:\")\n                        .font(.caption)\n                        .fontWeight(.medium)\n                        .foregroundColor(.secondary)\n                    Spacer()\n                }\n                \n                HStack {\n                    Text(booking.customerAddress)\n                        .font(.caption)\n                        .foregroundColor(.secondary)\n                        .lineLimit(2)\n                    \n                    Spacer()\n                    \n                    Button(action: {\n                        showingMap = true\n                    }) {\n                        HStack(spacing: 4) {\n                            Image(systemName: \"map\")\n                                .font(.system(size: 12))\n                            Text(\"View Map\")\n                                .font(.caption)\n                        }\n                        .padding(.horizontal, 10)\n                        .padding(.vertical, 6)\n                        .background(Color.blue)\n                        .foregroundColor(.white)\n                        .cornerRadius(8)\n                    }\n                    .buttonStyle(PlainButtonStyle())\n                }\n            }\n            \n            // Action buttons\n            HStack {\n                Button(\"Cancel Booking\") {\n                    onCancel()\n                }\n                .font(.caption)\n                .foregroundColor(.red)\n                .padding(.horizontal, 12)\n                .padding(.vertical, 6)\n                .background(Color.red.opacity(0.1))\n                .cornerRadius(6)\n                \n                Spacer()\n                \n                Text(booking.formattedPrice)\n                    .font(.caption)\n                    .fontWeight(.semibold)\n                    .foregroundColor(.green)\n            }\n            .padding(.top, 4)\n        }\n        .padding(16)\n        .background(Color(.systemBackground))\n        .overlay(\n            RoundedRectangle(cornerRadius: 12)\n                .stroke(Color(.systemGray4), lineWidth: 1)\n        )\n        .cornerRadius(12)\n        .shadow(color: .black.opacity(0.05), radius: 5, x: 0, y: 2)\n        .sheet(isPresented: $showingMap) {\n            BookingLocationMapView(\n                booking: booking\n            )\n        }\n    }\n}\n\n// Status badge component\nstruct StatusBadge: View {\n    let status: BookingStatus\n    \n    var body: some View {\n        HStack(spacing: 4) {\n            Image(systemName: status.icon)\n                .font(.system(size: 10))\n            Text(status.displayName)\n                .font(.caption)\n        }\n        .padding(.horizontal, 8)\n        .padding(.vertical, 4)\n        .background(status.color.opacity(0.15))\n        .foregroundColor(status.color)\n        .cornerRadius(6)\n    }\n}\n\n// Map view for booking location\nstruct BookingLocationMapView: View {\n    let booking: ServiceBooking\n    @Environment(\\.dismiss) private var dismiss\n    @State private var region = MKCoordinateRegion(\n        center: CLLocationCoordinate2D(latitude: 6.9271, longitude: 79.8612), // Colombo default\n        span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)\n    )\n    @State private var coordinate: CLLocationCoordinate2D?\n    @State private var isLoading = true\n    @State private var errorMessage: String?\n    \n    var body: some View {\n        NavigationView {\n            ZStack {\n                // Map view\n                Map(coordinateRegion: $region, annotationItems: coordinate.map { [MapLocation(coordinate: $0)] } ?? []) { location in\n                    MapAnnotation(coordinate: location.coordinate) {\n                        VStack(spacing: 4) {\n                            Image(systemName: \"mappin.circle.fill\")\n                                .font(.title)\n                                .foregroundColor(.red)\n                            \n                            VStack(spacing: 2) {\n                                Text(booking.customerName)\n                                    .font(.caption)\n                                    .fontWeight(.medium)\n                                Text(booking.serviceName)\n                                    .font(.caption2)\n                                    .foregroundColor(.secondary)\n                            }\n                            .padding(6)\n                            .background(.white)\n                            .cornerRadius(6)\n                            .shadow(radius: 2)\n                        }\n                    }\n                }\n                .ignoresSafeArea()\n                \n                // Loading indicator\n                if isLoading {\n                    VStack {\n                        ProgressView()\n                        Text(\"Locating address...\")\n                            .font(.caption)\n                            .foregroundColor(.secondary)\n                    }\n                    .padding()\n                    .background(.regularMaterial)\n                    .cornerRadius(10)\n                }\n                \n                // Error message\n                if let errorMessage = errorMessage {\n                    VStack {\n                        Spacer()\n                        HStack {\n                            Image(systemName: \"exclamationmark.triangle\")\n                            Text(errorMessage)\n                        }\n                        .foregroundColor(.white)\n                        .padding()\n                        .background(.red)\n                        .cornerRadius(8)\n                        .padding()\n                    }\n                }\n                \n                // Service info overlay\n                if !isLoading && coordinate != nil {\n                    VStack {\n                        HStack {\n                            VStack(alignment: .leading, spacing: 4) {\n                                Text(booking.serviceName)\n                                    .font(.headline)\n                                    .fontWeight(.semibold)\n                                Text(\"Scheduled: \\(booking.formattedDate) at \\(booking.formattedTime)\")\n                                    .font(.caption)\n                                    .foregroundColor(.secondary)\n                            }\n                            Spacer()\n                            StatusBadge(status: booking.status)\n                        }\n                        .padding()\n                        .background(.ultraThinMaterial)\n                        .cornerRadius(12)\n                        .padding(.horizontal)\n                        \n                        Spacer()\n                    }\n                }\n            }\n            .navigationTitle(\"Service Location\")\n            .navigationBarTitleDisplayMode(.inline)\n            .toolbar {\n                ToolbarItem(placement: .navigationBarLeading) {\n                    Button(\"Close\") {\n                        dismiss()\n                    }\n                }\n                \n                ToolbarItem(placement: .navigationBarTrailing) {\n                    if let coordinate = coordinate {\n                        Menu {\n                            Button(\"Get Directions\") {\n                                openInAppleMaps(coordinate: coordinate)\n                            }\n                            \n                            Button(\"Call Customer\") {\n                                callCustomer()\n                            }\n                            \n                            Button(\"Share Location\") {\n                                shareLocation(coordinate: coordinate)\n                            }\n                        } label: {\n                            Image(systemName: \"ellipsis.circle\")\n                        }\n                    }\n                }\n            }\n            .onAppear {\n                geocodeAddress()\n            }\n        }\n    }\n    \n    private func geocodeAddress() {\n        let geocoder = CLGeocoder()\n        \n        geocoder.geocodeAddressString(booking.customerAddress) { placemarks, error in\n            DispatchQueue.main.async {\n                isLoading = false\n                \n                if let error = error {\n                    errorMessage = \"Could not locate address: \\(error.localizedDescription)\"\n                    return\n                }\n                \n                guard let placemark = placemarks?.first,\n                      let location = placemark.location else {\n                    errorMessage = \"Address not found. Please verify the address with customer.\"\n                    return\n                }\n                \n                coordinate = location.coordinate\n                region = MKCoordinateRegion(\n                    center: location.coordinate,\n                    span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)\n                )\n            }\n        }\n    }\n    \n    private func openInAppleMaps(coordinate: CLLocationCoordinate2D) {\n        let placemark = MKPlacemark(coordinate: coordinate)\n        let mapItem = MKMapItem(placemark: placemark)\n        mapItem.name = \"\\(booking.customerName) - \\(booking.serviceName)\"\n        mapItem.openInMaps(launchOptions: [\n            MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving\n        ])\n    }\n    \n    private func callCustomer() {\n        let cleanPhone = booking.customerPhone.replacingOccurrences(of: \" \", with: \"\")\n        if let url = URL(string: \"tel://\\(cleanPhone)\") {\n            UIApplication.shared.open(url)\n        }\n    }\n    \n    private func shareLocation(coordinate: CLLocationCoordinate2D) {\n        let locationString = \"Location for \\(booking.serviceName): https://maps.apple.com/?ll=\\(coordinate.latitude),\\(coordinate.longitude)\"\n        \n        let activityController = UIActivityViewController(\n            activityItems: [locationString],\n            applicationActivities: nil\n        )\n        \n        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,\n           let window = windowScene.windows.first {\n            window.rootViewController?.present(activityController, animated: true)\n        }\n    }\n}\n\n// Map location model\nstruct MapLocation: Identifiable {\n    let id = UUID()\n    let coordinate: CLLocationCoordinate2D\n}";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Gamika.TaskFlowApp999;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		17D908302E7D0C410022BF22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TB42592928;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Gamika.TaskFlowApp999Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TaskFlowApp999.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TaskFlowApp999";
+			};
+			name = Debug;
+		};
+		17D908312E7D0C410022BF22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TB42592928;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Gamika.TaskFlowApp999Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TaskFlowApp999.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TaskFlowApp999";
+			};
+			name = Release;
+		};
+		17D908332E7D0C410022BF22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TB42592928;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Gamika.TaskFlowApp999UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TaskFlowApp999;
+			};
+			name = Debug;
+		};
+		17D908342E7D0C410022BF22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TB42592928;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Gamika.TaskFlowApp999UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TaskFlowApp999;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		17D908012E7D0C3E0022BF22 /* Build configuration list for PBXProject "TaskFlowApp999" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17D9082A2E7D0C410022BF22 /* Debug */,
+				17D9082B2E7D0C410022BF22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		17D9082C2E7D0C410022BF22 /* Build configuration list for PBXNativeTarget "TaskFlowApp999" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17D9082D2E7D0C410022BF22 /* Debug */,
+				17D9082E2E7D0C410022BF22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		17D9082F2E7D0C410022BF22 /* Build configuration list for PBXNativeTarget "TaskFlowApp999Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17D908302E7D0C410022BF22 /* Debug */,
+				17D908312E7D0C410022BF22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		17D908322E7D0C410022BF22 /* Build configuration list for PBXNativeTarget "TaskFlowApp999UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17D908332E7D0C410022BF22 /* Debug */,
+				17D908342E7D0C410022BF22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		17D908A22E7D169D0022BF22 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		17F4485D2E7FCE3A001C43D2 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17D908A22E7D169D0022BF22 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		17F4485F2E7FCE3A001C43D2 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17D908A22E7D169D0022BF22 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		17F448612E7FCE3A001C43D2 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17D908A22E7D169D0022BF22 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		17F448632E7FCE3A001C43D2 /* FirebaseInstallations */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17D908A22E7D169D0022BF22 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseInstallations;
+		};
+		17F448652E7FCE3A001C43D2 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17D908A22E7D169D0022BF22 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 17D907FE2E7D0C3E0022BF22 /* Project object */;
+}
